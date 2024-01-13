@@ -110,9 +110,9 @@ public class ItemConserve extends ItemEnumMulti {
 		MYSTERY(6, 5F),
 		PASHTET(4, 5F),
 		CHEESE(3, 5F),
-		JIZZ(15, 5F), // :3
+		//JIZZ(15, 5F), // :3
 		MILK(5, 5F),
-		ASS(6, 5F), // :3
+		//ASS(6, 5F), // :3
 		PIZZA(8, 5F),
 		TUBE(2, 5F),
 		TOMATO(4, 5F),
