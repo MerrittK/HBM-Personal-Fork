@@ -264,12 +264,12 @@ public class BobmazonOfferFactory {
 				ModItems.ammo_4gauge.stackFromEnum(64, Ammo4Gauge.VOID)
 				), Requirement.HIDDEN, 64));
 		
-		special.add(new Offer(ItemKitNBT.create(
-				new ItemStack(ModItems.rod_of_discord).setStackDisplayName("Cock Joke"),
-				ModItems.canned_conserve.stackFromEnum(64, EnumFoodType.JIZZ).setStackDisplayName("Class A Horse Semen"),
-				new ItemStack(ModItems.pipe_lead).setStackDisplayName("Get Nutted, Dumbass"),
-				new ItemStack(ModItems.gem_alexandrite)
-				).setStackDisplayName("The Nut Bucket"), Requirement.HIDDEN, 64));
+		//special.add(new Offer(ItemKitNBT.create(
+		//		new ItemStack(ModItems.rod_of_discord).setStackDisplayName("Cock Joke"),
+		//		ModItems.canned_conserve.stackFromEnum(64, EnumFoodType.JIZZ).setStackDisplayName("Class A Horse Semen"),
+		//		new ItemStack(ModItems.pipe_lead).setStackDisplayName("Get Nutted, Dumbass"),
+		//		new ItemStack(ModItems.gem_alexandrite)
+		//		).setStackDisplayName("The Nut Bucket"), Requirement.HIDDEN, 64));
 		
 		special.add(new Offer(ItemKitNBT.create(
 				new ItemStack(ModItems.rpa_helmet),

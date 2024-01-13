@@ -1152,8 +1152,8 @@ public class ModEventHandler {
 	
 	@SubscribeEvent
 	public void onItemPickup(PlayerEvent.ItemPickupEvent event) {
-		if(event.pickedUp.getEntityItem().getItem() == ModItems.canned_conserve && EnumUtil.grabEnumSafely(EnumFoodType.class, event.pickedUp.getEntityItem().getItemDamage()) == EnumFoodType.JIZZ)
-			event.player.triggerAchievement(MainRegistry.achC20_5);
+		//if(event.pickedUp.getEntityItem().getItem() == ModItems.canned_conserve && EnumUtil.grabEnumSafely(EnumFoodType.class, event.pickedUp.getEntityItem().getItemDamage()) == EnumFoodType.JIZZ)
+		//	event.player.triggerAchievement(MainRegistry.achC20_5);
 		if(event.pickedUp.getEntityItem().getItem() == Items.slime_ball)
 			event.player.triggerAchievement(MainRegistry.achSlimeball);
 	}
