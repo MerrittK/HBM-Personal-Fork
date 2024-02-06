@@ -1,4 +1,4 @@
-package com.hbm.entity.mob;
+package com.hbm.entity.mob.glyphid;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -7,16 +7,18 @@ import java.util.List;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.config.MobConfig;
 import com.hbm.entity.logic.EntityWaypoint;
+import com.hbm.entity.mob.EntityParasiteMaggot;
 import com.hbm.entity.pathfinder.PathFinderUtils;
 import com.hbm.explosion.vanillant.ExplosionVNT;
 import com.hbm.explosion.vanillant.standard.*;
 import com.hbm.handler.pollution.PollutionHandler;
 import com.hbm.handler.pollution.PollutionHandler.PollutionType;
 import com.hbm.items.ModItems;
-import com.hbm.lib.ModDamageSource;
 import com.hbm.main.ResourceManager;
+import com.hbm.packet.AuxParticlePacketNT;
+import com.hbm.packet.PacketDispatcher;
 
-import com.hbm.potion.HbmPotion;
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -114,9 +116,17 @@ public class EntityGlyphid extends EntityMob {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(30D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(1D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(5D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(GlyphidStats.getStats().getGrunt().health);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(GlyphidStats.getStats().getGrunt().speed);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(GlyphidStats.getStats().getGrunt().damage);
+	}
+	
+	public float getDivisorPerArmorPoint() {
+		return GlyphidStats.getStats().getGrunt().divisor;
+	}
+
+	public float getDamageThreshold() {
+		return GlyphidStats.getStats().getGrunt().damageThreshold;
 	}
 
 	@Override
@@ -290,43 +300,9 @@ public class EntityGlyphid extends EntityMob {
 		if(source.getEntity() instanceof EntityGlyphid) {
 			return false;
 		}
-
-		if(!source.isDamageAbsolute() && !source.isUnblockable() && !worldObj.isRemote && !source.isFireDamage() && !source.getDamageType().equals(ModDamageSource.s_cryolator)) {
-			byte armor = this.dataWatcher.getWatchableObjectByte(DW_ARMOR);
-
-			if(armor != 0) { //if at least one bit of armor is present
-
-				if(amount < getDamageThreshold()) return false;
-
-				 //chances of armor being broken off
-				if(amount > 1 && isArmorBroken(amount)) {
-					breakOffArmor();
-					amount *= 0.25F;
-				}
-
-				amount -= getDamageThreshold();
-				if(amount < 0) return true;
-			}
-
-			amount = this.calculateDamage(amount);
-		}
-
-		if(source.isFireDamage()) {
-			amount *= 0.7F;
-		} else if(source.getDamageType().equals("player")) {
-			amount *= getScale() < 1.25 ? 1.5 : getScale() < 1.3 ? 0.8 : 0.5;
-		} else if(source == ModDamageSource.acid || source.equals(new DamageSource(ModDamageSource.s_acid))){
-			amount = 0;
-		} else if(source == DamageSource.inWall) {
-			amount *= 15F;
-		}
-
-		if(this.isPotionActive(HbmPotion.phosphorus.getId())){
-			amount *= 1.5F;
-		}
 		
 		boolean alive = this.getHealth() > 0;
-		boolean wasAttacked = super.attackEntityFrom(source, amount);
+		boolean wasAttacked = GlyphidStats.getStats().handleAttack(this, source, amount);
 		
 		if(alive && this.getHealth() <= 0) {
 			if(doesInfectedSpawnMaggots() && this.dataWatcher.getWatchableObjectByte(DW_SUBTYPE) == TYPE_INFECTED) {
@@ -343,10 +319,23 @@ public class EntityGlyphid extends EntityMob {
 					maggot.velocityChanged = true;
 					this.worldObj.spawnEntityInWorld(maggot);
 				}
+
+				worldObj.playSoundEffect(posX, posY, posZ, "mob.zombie.woodbreak", 2.0F, 0.95F + worldObj.rand.nextFloat() * 0.2F);
+				
+				NBTTagCompound vdat = new NBTTagCompound();
+				vdat.setString("type", "giblets");
+				vdat.setInteger("ent", this.getEntityId());
+				PacketDispatcher.wrapper.sendToAllAround(new AuxParticlePacketNT(vdat, posX, posY + height * 0.5, posZ), new TargetPoint(dimension, posX, posY + height * 0.5, posZ, 150));
+				
 			}
 		}
 
 		return wasAttacked;
+	}
+
+	/** Provides a direct entrypoint from outside to access the superclass' implementation because otherwise we end up wwith infinite recursion */
+	public boolean attackSuperclass(DamageSource source, float amount) {
+		return super.attackEntityFrom(source, amount);
 	}
 	
 	public boolean doesInfectedSpawnMaggots() {
@@ -360,21 +349,17 @@ public class EntityGlyphid extends EntityMob {
 	public float calculateDamage(float amount) {
 
 		byte armor = this.dataWatcher.getWatchableObjectByte(DW_ARMOR);
-		int divisor = 1;
+		float divisor = 1;
 
 		for(int i = 0; i < 5; i++) {
 			if((armor & (1 << i)) > 0) {
-				divisor++;
+				divisor += getDivisorPerArmorPoint();
 			}
 		}
 
 		amount /= divisor;
 
 		return amount;
-	}
-
-	public float getDamageThreshold() {
-		return 0.5F;
 	}
 
 	public void breakOffArmor() {
