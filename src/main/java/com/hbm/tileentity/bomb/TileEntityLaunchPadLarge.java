@@ -1,31 +1,22 @@
 package com.hbm.tileentity.bomb;
 
-import com.hbm.inventory.container.ContainerLaunchPadLarge;
-import com.hbm.inventory.fluid.Fluids;
-import com.hbm.inventory.fluid.tank.FluidTank;
-import com.hbm.inventory.gui.GUILaunchPadLarge;
 import com.hbm.items.weapon.ItemMissile;
+import com.hbm.items.weapon.ItemMissile.MissileFormFactor;
+import com.hbm.main.MainRegistry;
+import com.hbm.sound.AudioWrapper;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.IRadarCommandReceiver;
-import com.hbm.tileentity.TileEntityMachineBase;
 
 import api.hbm.energy.IEnergyUser;
 import api.hbm.fluid.IFluidStandardReceiver;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
+import net.minecraft.util.AxisAlignedBB;
 
-public class TileEntityLaunchPadLarge extends TileEntityMachineBase implements IEnergyUser, IFluidStandardReceiver, IGUIProvider, IRadarCommandReceiver {
+public class TileEntityLaunchPadLarge extends TileEntityLaunchPadBase implements IEnergyUser, IFluidStandardReceiver, IGUIProvider, IRadarCommandReceiver {
 
-	public ItemStack toRender;
 	public int formFactor = -1;
 	/** Whether the missile has already been placed on the launchpad. Missile will render statically on the pad if true */
 	public boolean erected = false;
@@ -44,36 +35,35 @@ public class TileEntityLaunchPadLarge extends TileEntityMachineBase implements I
 	/** Delay between erector movements */
 	public int delay = 20;
 	
-	public long power;
-	public final long maxPower = 100_000;
+	private AudioWrapper audioLift;
+	private AudioWrapper audioErector;
 	
-	public FluidTank[] tanks;
+	protected boolean liftMoving = false;
+	protected boolean erectorMoving = false;
 
-	public TileEntityLaunchPadLarge() {
-		super(7);
-		this.tanks = new FluidTank[2];
-		this.tanks[0] = new FluidTank(Fluids.NONE, 24_000);
-		this.tanks[1] = new FluidTank(Fluids.NONE, 24_000);
-	}
-
-	@Override
-	public String getName() {
-		return "container.launchPad";
-	}
+	@Override public boolean isReadyForLaunch() { return this.erected && this.readyToLoad; }
+	@Override public double getLaunchOffset() { return 2D; }
 
 	@Override
 	public void updateEntity() {
 		
 		if(!worldObj.isRemote) {
+
+			this.prevLift = this.lift;
+			this.prevErector = this.erector;
 			
 			float erectorSpeed = 1.5F;
 			float liftSpeed = 0.025F;
 			
-			if(slots[0] != null) {
+			if(this.isMissileValid()) {
 				if(slots[0].getItem() instanceof ItemMissile) {
 					ItemMissile missile = (ItemMissile) slots[0].getItem();
 					this.formFactor = missile.formFactor.ordinal();
-					setFuel(missile);
+					
+					if(missile.formFactor == MissileFormFactor.ATLAS || missile.formFactor == MissileFormFactor.HUGE) {
+						erectorSpeed /= 2F;
+						liftSpeed /= 2F;
+					}
 				}
 				
 				if(this.erector == 90F && this.lift == 1F) {
@@ -144,7 +134,15 @@ public class TileEntityLaunchPadLarge extends TileEntityMachineBase implements I
 				}
 			}
 
-			this.networkPackNT(250);
+			boolean prevLiftMoving = this.liftMoving;
+			boolean prevErectorMoving = this.erectorMoving;
+			this.liftMoving = false;
+			this.erectorMoving = false;
+			if(this.prevLift != this.lift) this.liftMoving = true;
+			if(this.prevErector != this.erector) this.erectorMoving = true;
+
+			if(prevLiftMoving && !this.liftMoving) worldObj.playSoundEffect(xCoord, yCoord, zCoord, "hbm:door.wgh_stop", 2F, 1F);
+			if(prevErectorMoving && !this.erectorMoving) worldObj.playSoundEffect(xCoord, yCoord, zCoord, "hbm:door.garage_stop", 2F, 1F);
 			
 		} else {
 			this.prevLift = this.lift;
@@ -158,45 +156,61 @@ public class TileEntityLaunchPadLarge extends TileEntityMachineBase implements I
 				this.lift = this.syncLift;
 				this.erector = this.syncErector;
 			}
+			
+			if(this.liftMoving) {
+				if(this.audioLift == null || !this.audioLift.isPlaying()) {
+					this.audioLift = MainRegistry.proxy.getLoopedSound("hbm:door.wgh_start", xCoord, yCoord, zCoord, 0.75F, 25F, 1.0F, 5);
+					this.audioLift.startSound();
+				}
+				this.audioLift.keepAlive();
+			} else {
+				if(this.audioLift != null) {
+					this.audioLift.stopSound();
+					this.audioLift = null;
+				}
+			}
+			
+			if(this.erectorMoving) {
+				if(this.audioErector == null || !this.audioErector.isPlaying()) {
+					this.audioErector = MainRegistry.proxy.getLoopedSound("hbm:door.garage_move", xCoord, yCoord, zCoord, 1.5F, 25F, 1.0F, 5);
+					this.audioErector.startSound();
+				}
+				this.audioErector.keepAlive();
+			} else {
+				if(this.audioErector != null) {
+					this.audioErector.stopSound();
+					this.audioErector = null;
+				}
+			}
+			
+			if(this.erected && (this.formFactor == MissileFormFactor.HUGE.ordinal() || this.formFactor == MissileFormFactor.ATLAS.ordinal()) && this.tanks[1].getFill() > 0) {
+				NBTTagCompound data = new NBTTagCompound();
+				data.setString("type", "tower");
+				data.setFloat("lift", 0F);
+				data.setFloat("base", 0.5F);
+				data.setFloat("max", 2F);
+				data.setInteger("life", 70 + worldObj.rand.nextInt(30));
+				data.setDouble("posX", xCoord + 0.5 + worldObj.rand.nextGaussian() * 0.5);
+				data.setDouble("posZ", zCoord + 0.5 + worldObj.rand.nextGaussian() * 0.5);
+				data.setDouble("posY", yCoord + 2);
+				data.setBoolean("noWind", true);
+				data.setFloat("alphaMod", 2F);
+				data.setFloat("strafe", 0.05F);
+				for(int i = 0; i < 3; i++) MainRegistry.proxy.effectNT(data);
+			}
 		}
-	}
-	
-	@SuppressWarnings("incomplete-switch") //shut up
-	public void setFuel(ItemMissile missile) {
-		switch(missile.fuel) {
-		case ETHANOL_PEROXIDE:
-			tanks[0].setTankType(Fluids.ETHANOL);
-			tanks[1].setTankType(Fluids.ACID);
-			break;
-		case KEROSENE_PEROXIDE:
-			tanks[0].setTankType(Fluids.KEROSENE);
-			tanks[1].setTankType(Fluids.ACID);
-			break;
-		case KEROSENE_LOXY:
-			tanks[0].setTankType(Fluids.KEROSENE);
-			tanks[1].setTankType(Fluids.OXYGEN);
-			break;
-		case JETFUEL_LOXY:
-			tanks[0].setTankType(Fluids.KEROSENE_REFORM);
-			tanks[1].setTankType(Fluids.OXYGEN);
-			break;
-		}
+		
+		super.updateEntity();
 	}
 
 	@Override
 	public void serialize(ByteBuf buf) {
 		super.serialize(buf);
 		
-		if(slots[0] != null) {
-			buf.writeBoolean(true);
-			buf.writeInt(Item.getIdFromItem(slots[0].getItem()));
-			buf.writeShort((short) slots[0].getItemDamage());
-		} else {
-			buf.writeBoolean(false);
-		}
-
-		buf.writeBoolean(erected);
-		buf.writeBoolean(readyToLoad);
+		buf.writeBoolean(this.liftMoving);
+		buf.writeBoolean(this.erectorMoving);
+		buf.writeBoolean(this.erected);
+		buf.writeBoolean(this.readyToLoad);
 		buf.writeByte((byte) this.formFactor);
 		buf.writeFloat(this.lift);
 		buf.writeFloat(this.erector);
@@ -205,17 +219,12 @@ public class TileEntityLaunchPadLarge extends TileEntityMachineBase implements I
 	@Override
 	public void deserialize(ByteBuf buf) {
 		super.deserialize(buf);
-		
-		if(buf.readBoolean()) {
-			this.toRender = new ItemStack(Item.getItemById(buf.readInt()), 1, buf.readShort());
-		} else {
-			this.toRender = null;
-		}
 
+		this.liftMoving = buf.readBoolean();
+		this.erectorMoving = buf.readBoolean();
 		this.erected = buf.readBoolean();
 		this.readyToLoad = buf.readBoolean();
 		this.formFactor = buf.readByte();
-
 		this.syncLift = buf.readFloat();
 		this.syncErector = buf.readFloat();
 		
@@ -227,49 +236,47 @@ public class TileEntityLaunchPadLarge extends TileEntityMachineBase implements I
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-		power = nbt.getLong("power");
 
 		this.erected = nbt.getBoolean("erected");
 		this.readyToLoad = nbt.getBoolean("readyToLoad");
 		this.lift = nbt.getFloat("lift");
 		this.erector = nbt.getFloat("erector");
+		this.formFactor = nbt.getInteger("formFactor");
 	}
 	
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
-		nbt.setLong("power", power);
 
 		nbt.setBoolean("erected", erected);
 		nbt.setBoolean("readyToLoad", readyToLoad);
 		nbt.setFloat("lift", lift);
 		nbt.setFloat("erector", erector);
+		nbt.setInteger("formFactor", formFactor);
 	}
-
-	@Override public long getPower() { return power; }
-	@Override public void setPower(long power) { this.power = power; }
-	@Override public long getMaxPower() { return maxPower; }
-	@Override public FluidTank[] getAllTanks() { return this.tanks; }
-	@Override public FluidTank[] getReceivingTanks() { return this.tanks; }
-
+	
+	AxisAlignedBB bb = null;
+	
 	@Override
-	public boolean sendCommandPosition(int x, int y, int z) {
-		return false;
+	public AxisAlignedBB getRenderBoundingBox() {
+		
+		if(bb == null) {
+			bb = AxisAlignedBB.getBoundingBox(
+					xCoord - 10,
+					yCoord,
+					zCoord - 10,
+					xCoord + 11,
+					yCoord + 15,
+					zCoord + 11
+					);
+		}
+		
+		return bb;
 	}
-
-	@Override
-	public boolean sendCommandEntity(Entity target) {
-		return false;
-	}
-
-	@Override
-	public Container provideContainer(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		return new ContainerLaunchPadLarge(player.inventory, this);
-	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public GuiScreen provideGUI(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		return new GUILaunchPadLarge(player.inventory, this);
+	public double getMaxRenderDistanceSquared() {
+		return 65536.0D;
 	}
 }

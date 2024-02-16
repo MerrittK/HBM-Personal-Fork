@@ -219,7 +219,6 @@ public class AssemblerRecipes {
 		makeRecipe(new ComparableStack(ModItems.tritium_deuterium_cake, 1), new AStack[] {new ComparableStack(ModItems.cell_deuterium, 6), new ComparableStack(ModItems.cell_tritium, 2), new OreDictStack(LI.ingot(), 4), },150);
 		makeRecipe(new ComparableStack(ModItems.pellet_cluster, 1), new AStack[] {new OreDictStack(STEEL.plate(), 4), new ComparableStack(Blocks.tnt, 1), }, 50);
 		makeRecipe(new ComparableStack(ModItems.pellet_buckshot, 1), new AStack[] {new OreDictStack(PB.nugget(), 6), }, 50);
-		makeRecipe(new ComparableStack(ModItems.australium_iii, 1), new AStack[] {new ComparableStack(ModItems.nugget_australium, 6), new OreDictStack(STEEL.ingot(), 1), new OreDictStack(STEEL.plate(), 6), new OreDictStack(CU.plate(), 2), new ComparableStack(ModItems.wire_copper, 6), },150);
 		makeRecipe(new ComparableStack(ModItems.magnetron, 1), new AStack[] {new OreDictStack(ALLOY.plate(), 3), new ComparableStack(ModItems.wire_tungsten, 1), new ComparableStack(ModItems.coil_tungsten, 1), },100);
 		makeRecipe(new ComparableStack(ModItems.pellet_schrabidium, 1), new AStack[] {new OreDictStack(SA326.ingot(), 5), new OreDictStack(IRON.plate(), 2), }, 200);
 		makeRecipe(new ComparableStack(ModItems.pellet_hes, 1), new AStack[] {new ComparableStack(ModItems.ingot_hes, 5), new OreDictStack(IRON.plate(), 2), }, 200);
@@ -986,6 +985,16 @@ public class AssemblerRecipes {
 				new ComparableStack(ModItems.hull_big_steel, 3),
 				new ComparableStack(ModItems.pipes_steel, 1),
 				new ComparableStack(ModItems.motor, 1),
+				new ComparableStack(ModItems.circuit_red_copper, 3)
+			}, 200);
+		makeRecipe(new ComparableStack(ModBlocks.machine_hydrotreater, 1), new AStack[] {
+				!exp ? new OreDictStack(STEEL.plateWelded(), 8) : new OreDictStack(STEEL.heavyComp(), 4),
+				!exp ? new OreDictStack(CU.plateCast(), 4) : new OreDictStack(CU.heavyComp(), 2),
+				new OreDictStack(NB.ingot(), 8),
+				new OreDictStack(ANY_RESISTANTALLOY.ingot(), 4),
+				new ComparableStack(ModItems.hull_big_steel, 2),
+				new ComparableStack(ModItems.pipes_steel, 1),
+				new ComparableStack(ModItems.motor_desh, 2),
 				new ComparableStack(ModItems.circuit_red_copper, 3)
 			}, 200);
 
