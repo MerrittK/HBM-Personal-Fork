@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.entity.RenderMinecart;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.client.resources.Language;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -419,6 +420,7 @@ public class ClientProxy extends ServerProxy {
 		MinecraftForgeClient.registerItemRenderer(ModItems.dnt_sword, new ItemRenderTransformer(rtp, ttp_high, stp, rfp, tfp, sfp, rir, tir, sir));
 		
 		ItemRenderMissileGeneric.init();
+		MinecraftForgeClient.registerItemRenderer(ModItems.missile_test, new ItemRenderMissileGeneric(RenderMissileType.TYPE_TIER0));
 		MinecraftForgeClient.registerItemRenderer(ModItems.missile_taint, new ItemRenderMissileGeneric(RenderMissileType.TYPE_TIER0));
 		MinecraftForgeClient.registerItemRenderer(ModItems.missile_micro, new ItemRenderMissileGeneric(RenderMissileType.TYPE_TIER0));
 		MinecraftForgeClient.registerItemRenderer(ModItems.missile_bhole, new ItemRenderMissileGeneric(RenderMissileType.TYPE_TIER0));
@@ -719,6 +721,7 @@ public class ClientProxy extends ServerProxy {
 	    RenderingRegistry.registerEntityRenderingHandler(EntityMissileSchrabidium.class, new RenderMissileTaint());
 	    RenderingRegistry.registerEntityRenderingHandler(EntityMissileEMP.class, new RenderMissileTaint());
 	    RenderingRegistry.registerEntityRenderingHandler(EntityMissileShuttle.class, new RenderMissileShuttle());
+	    RenderingRegistry.registerEntityRenderingHandler(EntityMissileTest.class, new RenderMissileTaint());
 		//effects
 	    RenderingRegistry.registerEntityRenderingHandler(EntityCloudFleija.class, new RenderCloudFleija());
 	    RenderingRegistry.registerEntityRenderingHandler(EntityCloudFleijaRainbow.class, new RenderCloudRainbow());
@@ -934,7 +937,7 @@ public class ClientProxy extends ServerProxy {
 			Minecraft.getMinecraft().effectRenderer.addEffect(contrail);
 		}
 		if("exKerosene".equals(type)) {
-			ParticleContrail contrail = new ParticleContrail(man, world, x, y, z);
+			ParticleContrail contrail = new ParticleContrail(man, world, x, y, z, 0F, 0F, 0F, 1F);
 			Minecraft.getMinecraft().effectRenderer.addEffect(contrail);
 		}
 		if("exSolid".equals(type)) {
@@ -973,9 +976,26 @@ public class ClientProxy extends ServerProxy {
 		double z = data.getDouble("posZ");
 		
 		if("missileContrail".equals(type)) {
+			
+			if(Vec3.createVectorHelper(player.posX - x, player.posY - y, player.posZ - z).lengthVector() > 350) return;
+			
 			float scale = data.hasKey("scale") ? data.getFloat("scale") : 1F;
-			ParticleContrail contrail = new ParticleContrail(man, world, x, y, z, 0, 0, 0, scale);
-			Minecraft.getMinecraft().effectRenderer.addEffect(contrail);
+			double mX = data.getDouble("moX");
+			double mY = data.getDouble("moY");
+			double mZ = data.getDouble("moZ");
+			
+			/*ParticleContrail contrail = new ParticleContrail(man, world, x, y, z, 0, 0, 0, scale);
+			contrail.motionX = mX;
+			contrail.motionY = mY;
+			contrail.motionZ = mZ;
+			Minecraft.getMinecraft().effectRenderer.addEffect(contrail);*/
+			
+			ParticleRocketFlame fx = new ParticleRocketFlame(man, world, x, y, z).setScale(scale);
+			fx.motionX = mX;
+			fx.motionY = mY;
+			fx.motionZ = mZ;
+			if(data.hasKey("maxAge")) fx.setMaxAge(data.getInteger("maxAge"));
+			Minecraft.getMinecraft().effectRenderer.addEffect(fx);
 		}
 		
 		if("smoke".equals(type)) {
@@ -2084,5 +2104,11 @@ public class ClientProxy extends ServerProxy {
 	@Override
 	public void playSoundClient(double x, double y, double z, String sound, float volume, float pitch) {
 		Minecraft.getMinecraft().getSoundHandler().playSound(new PositionedSoundRecord(new ResourceLocation(sound), volume, pitch, (float) x, (float) y, (float) z));
+	}
+
+	@Override
+	public String getLanguageCode() {
+		Language lang = Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage();
+		return lang.getLanguageCode();
 	}
 }
