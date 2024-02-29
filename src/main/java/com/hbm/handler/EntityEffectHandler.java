@@ -210,6 +210,7 @@ public class EntityEffectHandler {
 	
 			float rad = ChunkRadiationManager.proxy.getRadiation(world, ix, iy, iz);
 	
+
 			if(world.provider.isHellWorld && RadiationConfig.hellRad > 0 && rad < RadiationConfig.hellRad)
 				rad = (float) RadiationConfig.hellRad;
 	

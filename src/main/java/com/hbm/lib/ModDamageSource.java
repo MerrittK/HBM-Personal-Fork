@@ -55,6 +55,12 @@ public class ModDamageSource extends DamageSource {
 	public static DamageSource microwave = (new DamageSource("microwave")).setDamageIsAbsolute().setDamageBypassesArmor();
 	public static DamageSource nitan = (new DamageSource("nitan")).setDamageIsAbsolute().setDamageBypassesArmor().setDamageAllowedInCreativeMode();;
 
+	public static DamageSource oiledup = (new DamageSource("oiledup")).setDamageIsAbsolute().setDamageBypassesArmor();
+	public static DamageSource run = (new DamageSource("run")).setDamageIsAbsolute().setDamageBypassesArmor();
+
+
+
+	
 	public static final String s_bullet = "revolverBullet";
 	public static final String s_emplacer = "chopperBullet";
 	public static final String s_tau = "tau";
@@ -68,6 +74,7 @@ public class ModDamageSource extends DamageSource {
 	public static final String s_laser = "laser";
 	public static final String s_boil = "boil";
 	public static final String s_acid = "acidPlayer";
+	public static final String heal = "healPlayer";
 
 	public ModDamageSource(String p_i1566_1_) {
 		super(p_i1566_1_);

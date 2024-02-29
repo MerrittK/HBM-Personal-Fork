@@ -76,6 +76,7 @@ public class Library {
 	public static String Barnaby99_x = "b04cf173-cff0-4acd-aa19-3d835224b43d";
 	public static String Ma118 = "1121cb7a-8773-491f-8e2b-221290c93d81";
 	public static String Adam29Adam29 = "bbae7bfa-0eba-40ac-a0dd-f3b715e73e61";
+	public static String DUODEC_ = "85d54b8c-1862-4c86-b351-5ef1b998aa32";
 	public static String Alcater = "0b399a4a-8545-45a1-be3d-ece70d7d48e9";
 	public static String ege444 = "42ee978c-442a-4cd8-95b6-29e469b6df10";
 
@@ -182,6 +183,18 @@ public class Library {
 		
 		return false;
 	}
+	
+	public static boolean checkInventory(EntityPlayer player, Item item, int slot)
+	{
+		if(player.inventory.mainInventory[slot] != null &&
+				player.inventory.mainInventory[slot].getItem() == item) 
+		{
+			return true;
+		}
+		
+		return false;
+	}
+
 	
 	public static boolean checkUnionListForFluids(List<UnionOfTileEntitiesAndBooleansForFluids> list, IFluidSource that) {
 		

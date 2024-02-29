@@ -204,6 +204,7 @@ public class BobmazonOfferFactory {
 		special.add(new Offer(new ItemStack(ModBlocks.crate_can, 1), Requirement.STEEL, 1));
 		special.add(new Offer(new ItemStack(ModBlocks.crate_ammo, 1), Requirement.STEEL, 2));
 		special.add(new Offer(new ItemStack(ModItems.crucible, 1, 3), Requirement.STEEL, 10));
+		special.add(new Offer(new ItemStack(ModItems.pellet_charged, 1), Requirement.STEEL, 16));
 		special.add(new Offer(new ItemStack(ModItems.spawn_chopper, 1), Requirement.STEEL, 10));
 		special.add(new Offer(new ItemStack(ModItems.spawn_worm, 1), Requirement.STEEL, 10));
 		special.add(new Offer(new ItemStack(ModItems.spawn_ufo, 1), Requirement.STEEL, 10));
@@ -264,12 +265,14 @@ public class BobmazonOfferFactory {
 				ModItems.ammo_4gauge.stackFromEnum(64, Ammo4Gauge.VOID)
 				), Requirement.HIDDEN, 64));
 		
+
 		//special.add(new Offer(ItemKitNBT.create(
 		//		new ItemStack(ModItems.rod_of_discord).setStackDisplayName("Cock Joke"),
 		//		ModItems.canned_conserve.stackFromEnum(64, EnumFoodType.JIZZ).setStackDisplayName("Class A Horse Semen"),
 		//		new ItemStack(ModItems.pipe_lead).setStackDisplayName("Get Nutted, Dumbass"),
 		//		new ItemStack(ModItems.gem_alexandrite)
 		//		).setStackDisplayName("The Nut Bucket"), Requirement.HIDDEN, 64));
+
 		
 		special.add(new Offer(ItemKitNBT.create(
 				new ItemStack(ModItems.rpa_helmet),

@@ -3,7 +3,8 @@
 	"misc.nullChopper": {"category": "player", "sounds": [{"name": "misc/null", "stream": false}]},
 	"misc.nullCrashing": {"category": "player", "sounds": [{"name": "misc/null", "stream": false}]},
 	"misc.nullMine": {"category": "player", "sounds": [{"name": "misc/null", "stream": false}]},
-
+    "misc.flashe": {"category": "player", "sounds": [{"name": "misc/a7", "stream": false}]},
+    "turret.battery_fire": {"category": "block", "sounds": [{"name": "turret/battery_fire", "stream": false}]},
 	"block.crateBreak": {"category": "block", "sounds": ["block/crateBreak1", "block/crateBreak2", "block/crateBreak3", "block/crateBreak4", "block/crateBreak5"]},
 	"block.shutdown": {"category": "block", "sounds": [{"name": "block/shutdown", "stream": true}]},
     "block.minerOperate": {"category": "block", "sounds": [{"name": "block/minerOperate", "stream": true}]},
@@ -112,6 +113,9 @@
 	"music.recordSectorSweep": {"category": "record", "sounds": [{"name": "music/recordSectorSweep", "stream": true}]},
 	"music.recordVortalCombat": {"category": "record", "sounds": [{"name": "music/recordVortalCombat", "stream": true}]},
 	"music.transmission": {"category": "record", "sounds": [{"name": "music/recordGlass", "stream": true}]},
+    "music.recordGodSpeed": {"category": "record", "sounds": [{"name": "music/recordGodSpeed", "stream": true}]},
+    "music.recordGoop": {"category": "record", "sounds": [{"name": "music/recordGoop", "stream": true}]},
+    "music.recordEthereal": {"category": "record", "sounds": [{"name": "music/recordEthereal", "stream": true}]},
 
 	"weapon.tauShoot": {"category": "player", "sounds": [{"name": "weapon/tauShoot", "stream": false}]},
     "weapon.tauChargeLoop": {"category": "player", "sounds": [{"name": "weapon/tauChargeLoop", "stream": true}]},
@@ -134,6 +138,8 @@
 	"weapon.zomgShoot": {"category": "player", "sounds": [{"name": "weapon/zomgShoot", "stream": false}]},
 	"weapon.flamethrowerIgnite": {"category": "player", "sounds": [{"name": "weapon/flamethrowerIgnite", "stream": false}]},
 	"weapon.flamethrowerShoot": {"category": "player", "sounds": [{"name": "weapon/flamethrowerShoot", "stream": false}]},
+   "weapon.flashbang": {"category": "hostile", "sounds": [{"name": "weapon/flashbang", "stream": false}]},
+   "weapon.splort": {"category": "hostile", "sounds": [{"name": "weapon/splort", "stream": false}]},
 	"weapon.immolatorIgnite": {"category": "player", "sounds": [{"name": "weapon/immolatorIgnite", "stream": false}]},
 	"weapon.immolatorShoot": {"category": "player", "sounds": [{"name": "weapon/immolatorShoot", "stream": false}]},
 	"weapon.cryolatorShoot": {"category": "player", "sounds": [{"name": "weapon/cryolatorShoot", "stream": false}]},
@@ -202,7 +208,7 @@
     "weapon.shotgunPump": {"category": "player", "sounds": [{"name": "weapon/shotgunShootPump", "stream": false}]},
     "weapon.shotgunPumpAlt": {"category": "player", "sounds": [{"name": "weapon/shotgunShootPumpAlt", "stream": false}]},
     "weapon.explosionMedium": {"category": "player", "sounds": [{"name": "weapon/explosion_medium", "stream": false}]},
-    "weapon.hicalShot": {"category": "player", "sounds": [{"name": "weapon/hicalShot", "stream": false}]},
+    "weapon.hicalShot": {"category": "player", "sounds": ["weapon/hicalShot", "weapon/hicalShot3", "weapon/hicalShot4"]},
     "weapon.coilgunReload": {"category": "player", "sounds": [{"name": "weapon/coilgunReload", "stream": false}]},
     "weapon.coilgunShoot": {"category": "player", "sounds": [{"name": "weapon/coilgunShoot", "stream": false}]},
     "weapon.glReload": {"category": "player", "sounds": [{"name": "weapon/glReload", "stream": false}]},
@@ -238,9 +244,11 @@
     "entity.bombDet": {"category": "player", "sounds": ["entity/bombDet1", "entity/bombDet2", "entity/bombDet3"]},
     "entity.bombWhistle": {"category": "player", "sounds": [{"name": "entity/bombWhistle", "stream": false}]},
     "entity.bomberLoop": {"category": "player", "sounds": [{"name": "entity/bomber1", "stream": false}]},
+    "entity.civFly": {"category": "player", "sounds": [{"name": "entity/civFly", "stream": false}]},
     "entity.bomberSmallLoop": {"category": "player", "sounds": [{"name": "entity/bomber2", "stream": false}]},
     "entity.planeCrash": {"category": "hostile", "sounds": [{"name": "entity/planeCrash", "stream": false}]},
     "entity.planeShotDown": {"category": "hostile", "sounds": [{"name": "entity/planeShotDown", "stream": false}]},
+    "entity.warCrimeShotDown": {"category": "hostile", "sounds": [{"name": "entity/warCrimeShotDown", "stream": false}]},
 	"entity.cybercrab": {"category": "hostile", "sounds": ["entity/radio_random1", "entity/radio_random2", "entity/radio_random3", "entity/radio_random4", "entity/radio_random5", "entity/radio_random6", "entity/radio_random7", "entity/radio_random8", "entity/radio_random9", "entity/radio_random10", "entity/radio_random11", "entity/radio_random12", "entity/radio_random13", "entity/radio_random14", "entity/radio_random15"]},
     "entity.ducc": {"category": "neutral", "sounds": ["entity/ducc1", "entity/ducc2"]},
     "entity.slicer": {"category": "neutral", "sounds": ["entity/slicer1", "entity/slicer2", "entity/slicer3", "entity/slicer4"]},
@@ -257,8 +265,10 @@
     "step.iron": {"category": "player", "sounds": ["footsteps/iron1", "footsteps/iron2", "footsteps/iron3", "footsteps/iron4"]},
     "step.metalBlock": {"category": "block", "sounds": ["footsteps/metalStep1", "footsteps/metalStep2", "footsteps/metalStep3", "footsteps/metalStep4"]},
     "step.powered": {"category": "player", "sounds": ["footsteps/powered1", "footsteps/powered2", "footsteps/powered3"]},
+    "step.morkite": {"category": "player", "sounds": ["mining/MorkiteMiningB_3", "mining/MorkiteMiningB_2", "mining/MorkiteMiningB_1"]},
     
     "player.vomit": {"category": "player", "sounds": [{"name": "player/vomit", "stream": false}]},
+    "player.oil": {"category": "player", "sounds": [{"name": "player/oil", "stream": false}]},
     "player.cough": {"category": "player", "sounds": ["player/cough1", "player/cough2", "player/cough3", "player/cough4"]},
     "player.dash": {"category": "player", "sounds": [{"name": "player/dash", "stream": false}]},
     "player.dashRecharge": {"category": "player", "sounds": [{"name": "player/dashRecharge", "stream": false}]},
@@ -292,5 +302,33 @@
     "alarm.classic": {"category": "record", "sounds": [{"name": "alarm/classicSiren", "stream": false}]},
     "alarm.gambit": {"category": "record", "sounds": [{"name": "alarm/gambit", "stream": true}]},
     "alarm.soyuzed": {"category": "record", "sounds": [{"name": "alarm/soyuzed", "stream": false}]},
-    "alarm.chime": {"category": "record", "sounds": [{"name": "alarm/chime", "stream": false}]}
+    "alarm.chime": {"category": "record", "sounds": [{"name": "alarm/chime", "stream": false}]},
+    "alarm.ducc": {
+        "category": "record",
+        "sounds": [
+          {
+            "name": "alarm/ducc",
+            "stream": false
+          }
+        ]
+      },
+    "misc.turk": {
+        "category": "record",
+        "sounds": [
+          {
+            "name": "music/izzy",
+            "stream": false
+          }
+        ]
+      },
+      "alarm.mama": {
+        "category": "record",
+        "sounds": [
+          {
+            "name": "alarm/mama",
+            "stream": false
+          }
+        ]
+      }
+      
 }

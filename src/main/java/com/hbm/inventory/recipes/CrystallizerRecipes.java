@@ -51,6 +51,7 @@ public class CrystallizerRecipes extends SerializableRecipe {
 		final int utilityTime = 100;
 		final int mixingTime = 20;
 		FluidStack sulfur = new FluidStack(Fluids.SULFURIC_ACID, 500);
+		FluidStack nitric = new FluidStack(Fluids.NITRIC_ACID, 500);
 
 		registerRecipe(COAL.ore(),		new CrystallizerRecipe(ModItems.crystal_coal, baseTime));
 		registerRecipe(IRON.ore(),		new CrystallizerRecipe(ModItems.crystal_iron, baseTime));
@@ -74,6 +75,8 @@ public class CrystallizerRecipes extends SerializableRecipe {
 		registerRecipe(LI.ore(),		new CrystallizerRecipe(ModItems.crystal_lithium, baseTime), sulfur);
 		registerRecipe(STAR.ore(),		new CrystallizerRecipe(ModItems.crystal_starmetal, baseTime), sulfur);
 		registerRecipe(CO.ore(),		new CrystallizerRecipe(ModItems.crystal_cobalt, baseTime), sulfur);
+		registerRecipe(NI.ore(),		new CrystallizerRecipe(ModItems.crystal_nickel, baseTime), nitric);
+		registerRecipe((new ComparableStack(ModBlocks.ore_mineral)),		new CrystallizerRecipe(ModItems.crystal_mineral, baseTime)); //temp
 		
 		registerRecipe("oreRareEarth",	new CrystallizerRecipe(ModItems.crystal_rare, baseTime), sulfur);
 		registerRecipe("oreCinnabar",	new CrystallizerRecipe(ModItems.crystal_cinnebar, baseTime));
@@ -81,6 +84,7 @@ public class CrystallizerRecipes extends SerializableRecipe {
 		registerRecipe(new ComparableStack(ModBlocks.ore_nether_fire),	new CrystallizerRecipe(ModItems.crystal_phosphorus, baseTime));
 		registerRecipe(new ComparableStack(ModBlocks.ore_tikite),		new CrystallizerRecipe(ModItems.crystal_trixite, baseTime), sulfur);
 		registerRecipe(new ComparableStack(ModBlocks.gravel_diamond),	new CrystallizerRecipe(ModItems.crystal_diamond, baseTime));
+		registerRecipe(new ComparableStack(ModItems.crystal_mineral),	new CrystallizerRecipe(ModItems.crystal_diamond, baseTime));
 		registerRecipe(SRN.ingot(),										new CrystallizerRecipe(ModItems.crystal_schraranium, baseTime));
 		
 		registerRecipe("sand",				new CrystallizerRecipe(ModItems.ingot_fiberglass, utilityTime));
@@ -111,25 +115,56 @@ public class CrystallizerRecipes extends SerializableRecipe {
 		registerRecipe(new ComparableStack(ModItems.meteorite_sword_treated),	new CrystallizerRecipe(ModItems.meteorite_sword_etched, baseTime));
 		registerRecipe(new ComparableStack(ModItems.powder_impure_osmiridium),	new CrystallizerRecipe(ModItems.crystal_osmiridium, baseTime), new FluidStack(Fluids.SCHRABIDIC, 1_000));
 		
+		
 		for(int i = 0; i < ScrapType.values().length; i++) {
 			registerRecipe(new ComparableStack(ModItems.scrap_plastic, 1, i), new CrystallizerRecipe(new ItemStack(ModItems.circuit_star_piece, 1, i), baseTime));
 		}
 
-		FluidStack nitric = new FluidStack(Fluids.NITRIC_ACID, 500);
 		FluidStack organic = new FluidStack(Fluids.SOLVENT, 500);
+		FluidStack chloric = new FluidStack(Fluids.HCL, 500);
+		FluidStack schrabidic = new FluidStack(Fluids.SCHRABIDIC, 1000);
 		FluidStack hiperf = new FluidStack(Fluids.RADIOSOLVENT, 500);
 		
 		int oreTime = 200;
-		
+		FluidStack technetic = new FluidStack(Fluids.HTcO4, 500);
+
 		for(EnumBedrockOre ore : EnumBedrockOre.values()) {
 			int i = ore.ordinal();
-
+			FluidStack fluidStack = technetic;
+			FluidStack hcl = chloric;
+		    if (i == 8) {
+		    	registerRecipe(new ComparableStack(ModItems.ore_centrifuged, 1, 8),			new CrystallizerRecipe(new ItemStack(ModItems.ore_cleaned, 1, 8), oreTime), fluidStack);
+		    	registerRecipe(new ComparableStack(ModItems.ore_separated, 1, 8),			new CrystallizerRecipe(new ItemStack(ModItems.ore_purified, 1, 8), oreTime), hcl);
+				registerRecipe(new ComparableStack(ModItems.ore_separated, 1, 8),			new CrystallizerRecipe(new ItemStack(ModItems.ore_nitrated, 1, 8), oreTime), nitric); //theoretically
+				registerRecipe(new ComparableStack(ModItems.ore_nitrocrystalline, 1, 8),	new CrystallizerRecipe(new ItemStack(ModItems.ore_deepcleaned, 1, 8), oreTime), organic);
+				registerRecipe(new ComparableStack(ModItems.ore_nitrocrystalline, 1, 8),	new CrystallizerRecipe(new ItemStack(ModItems.ore_seared, 1, 8), oreTime), hiperf);
+		    }
+		    else if(i == 9) {
+		    	registerRecipe(new ComparableStack(ModItems.ore_centrifuged, 1, 9),			new CrystallizerRecipe(new ItemStack(ModItems.ore_cleaned, 1, 9), oreTime), fluidStack);
+		    	registerRecipe(new ComparableStack(ModItems.ore_separated, 1, 9),			new CrystallizerRecipe(new ItemStack(ModItems.ore_purified, 1, 9), oreTime), hcl);
+		    	
+				registerRecipe(new ComparableStack(ModItems.ore_separated, 1, 9),			new CrystallizerRecipe(new ItemStack(ModItems.ore_nitrated, 1, 9), oreTime), nitric); //theoretically
+				registerRecipe(new ComparableStack(ModItems.ore_nitrocrystalline, 1, 9),	new CrystallizerRecipe(new ItemStack(ModItems.ore_deepcleaned, 1, 9), oreTime), organic);
+				registerRecipe(new ComparableStack(ModItems.ore_nitrocrystalline, 1, 9),	new CrystallizerRecipe(new ItemStack(ModItems.ore_seared, 1, 9), oreTime), hiperf);
+		    }
+		    
+		    else {
 			registerRecipe(new ComparableStack(ModItems.ore_centrifuged, 1, i),			new CrystallizerRecipe(new ItemStack(ModItems.ore_cleaned, 1, i), oreTime));
 			registerRecipe(new ComparableStack(ModItems.ore_separated, 1, i),			new CrystallizerRecipe(new ItemStack(ModItems.ore_purified, 1, i), oreTime), sulfur);
 			registerRecipe(new ComparableStack(ModItems.ore_separated, 1, i),			new CrystallizerRecipe(new ItemStack(ModItems.ore_nitrated, 1, i), oreTime), nitric);
 			registerRecipe(new ComparableStack(ModItems.ore_nitrocrystalline, 1, i),	new CrystallizerRecipe(new ItemStack(ModItems.ore_deepcleaned, 1, i), oreTime), organic);
 			registerRecipe(new ComparableStack(ModItems.ore_nitrocrystalline, 1, i),	new CrystallizerRecipe(new ItemStack(ModItems.ore_seared, 1, i), oreTime), hiperf);
+			
 		}
+	}
+
+		int mineraltime = 300;
+		registerRecipe(new ComparableStack(ModItems.mineral_dust),	new CrystallizerRecipe(new ItemStack(ModItems.mineral_fragment, 1, 0), mineraltime));
+		registerRecipe(new ComparableStack(ModItems.mineral_dust),	new CrystallizerRecipe(new ItemStack(ModItems.mineral_fragment, 1, 1), mineraltime), nitric);
+		registerRecipe(new ComparableStack(ModItems.mineral_dust),	new CrystallizerRecipe(new ItemStack(ModItems.mineral_fragment, 1, 2), mineraltime), sulfur);
+		registerRecipe(new ComparableStack(ModItems.mineral_dust),	new CrystallizerRecipe(new ItemStack(ModItems.mineral_fragment, 1, 3), mineraltime), organic);
+		registerRecipe(new ComparableStack(ModItems.mineral_dust),	new CrystallizerRecipe(new ItemStack(ModItems.mineral_fragment, 1, 4), mineraltime), chloric);
+		registerRecipe(new ComparableStack(ModItems.mineral_dust),	new CrystallizerRecipe(new ItemStack(ModItems.mineral_fragment, 1, 5), mineraltime), schrabidic);
 		
 		FluidStack[] dyes = new FluidStack[] {new FluidStack(Fluids.WOODOIL, 100), new FluidStack(Fluids.FISHOIL, 100)};
 		for(FluidStack dye : dyes) {

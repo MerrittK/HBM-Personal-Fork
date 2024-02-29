@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.hbm.blocks.ModBlocks;
 import com.hbm.config.MobConfig;
+import com.hbm.config.RadiationConfig;
 import com.hbm.handler.radiation.ChunkRadiationManager;
 import com.hbm.interfaces.IControlReceiver;
 import com.hbm.inventory.RecipesCommon.ComparableStack;
@@ -14,7 +15,13 @@ import com.hbm.items.ModItems;
 import com.hbm.items.machine.ItemPlateFuel;
 import com.hbm.tileentity.IGUIProvider;
 import com.hbm.tileentity.TileEntityMachineBase;
+
 import com.hbm.util.CompatEnergyControl;
+
+import com.hbm.util.ContaminationUtil;
+import com.hbm.util.ContaminationUtil.ContaminationType;
+import com.hbm.util.ContaminationUtil.HazardType;
+
 
 import api.hbm.tile.IInfoProviderEC;
 import cpw.mods.fml.common.Optional;
@@ -27,6 +34,7 @@ import li.cil.oc.api.network.SimpleComponent;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
@@ -148,7 +156,8 @@ public class TileEntityReactorResearch extends TileEntityMachineBase implements 
 
 			if(level > 0 && heat > 0 && !(blocksRad(xCoord + 1, yCoord + 1, zCoord) && blocksRad(xCoord - 1, yCoord + 1, zCoord) && blocksRad(xCoord, yCoord + 1, zCoord + 1) && blocksRad(xCoord, yCoord + 1, zCoord - 1))) {
 				float rad = (float) heat / (float) maxHeat * 50F;
-				ChunkRadiationManager.proxy.incrementRad(worldObj, xCoord, yCoord, zCoord, rad);
+				double range = 25D;
+				ChunkRadiationManager.proxy.incrementRad(worldObj, xCoord, yCoord, zCoord, rad);															
 			}
 			
 			NBTTagCompound data = new NBTTagCompound();

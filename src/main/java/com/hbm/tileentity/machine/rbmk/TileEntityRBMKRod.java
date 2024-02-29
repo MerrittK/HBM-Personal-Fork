@@ -506,6 +506,7 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBM
 		return new GUIRBMKRod(player.inventory, this);
 	}
 
+
 	@Override
 	public void provideExtraInfo(NBTTagCompound data) {
 		if(slots[0] != null && slots[0].getItem() instanceof ItemRBMKRod) {
@@ -517,3 +518,4 @@ public class TileEntityRBMKRod extends TileEntityRBMKSlottedBase implements IRBM
 		}
 	}
 }
+

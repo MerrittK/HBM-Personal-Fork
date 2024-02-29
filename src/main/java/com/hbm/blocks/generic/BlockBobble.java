@@ -170,6 +170,7 @@ public class BlockBobble extends BlockContainer implements IGUIProvider {
 	
 	public static enum BobbleType {
 		
+
 		NONE(			"null",								"null",				null,														null,																								false,	ScrapType.BOARD_BLANK),
 		STRENGTH(		"Strength",							"Strength",			null,														"It's essential to give your arguments impact.",													false,	ScrapType.BRIDGE_BIOS),
 		PERCEPTION(		"Perception",						"Perception",		null,														"Only through observation will you perceive weakness.",												false,	ScrapType.BRIDGE_NORTH),
@@ -193,7 +194,11 @@ public class BlockBobble extends BlockContainer implements IGUIProvider {
 		CIRNO(			"Cirno",							"Cirno",			"the only multi layered skin i had",						"No brain. Head empty.",																			true,	ScrapType.BOARD_BLANK),
 		MICROWAVE(		"Microwave",						"Microwave",		"OC Compatibility",												"they call me the food heater",																		true,	ScrapType.BRIDGE_BIOS),
 		PEEP(			"Peep",								"LePeeperSauvage",	"Coilgun, Leadburster and Congo Lake models, BDCL QC",		"Fluffy ears can't hide in ash, nor snow.",															true,	ScrapType.CPU_CLOCK),
+		GWEN(			"Gwen",								"Gwen",			"Numero Uno Homie",											"HELP ME I'M TRAPPED IN THIS FUCKING POLYRESIN PRISON YOU NEED TO LET ME OUT PLEASE SMASH IT OPEN DO IT NOW CRACK IT",																					true,	ScrapType.BOARD_BLANK),
+		JUICE(			"Juicy_Lad",						"Juicy_Lad",	"The Mojave Testing for this funny fork",					"\"What should the Inscription be?\",$ \"Uhh.. I'll think about it.\"",								true,	ScrapType.BOARD_BLANK),
+		JAMESH_2(		"JamesH_2",							"JamesH_2",		"The fork itself",										"COME ON AND SLAM",																						true,	ScrapType.BOARD_BLANK),
 		MELLOW(			"MELLOWARPEGGIATION",					"Mellow",				"Industrial lighting, animation tools",						"Make something cool now, ask for permission later.",												true,	ScrapType.CPU_LOGIC);
+
 
 		public String name;			//the title of the tooltip
 		public String label;		//the name engraved in the socket

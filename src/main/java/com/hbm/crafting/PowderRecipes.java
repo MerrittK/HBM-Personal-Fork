@@ -29,6 +29,7 @@ public class PowderRecipes {
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.powder_semtex_mix, 1), new Object[] { ModItems.solid_fuel, ModItems.ballistite, KNO.dust() });
 		CraftingManager.addShapelessAuto(new ItemStack(Items.clay_ball, 4), new Object[] { KEY_SAND, ModItems.dust, ModItems.dust, Fluids.WATER.getDict(1_000) });
 		CraftingManager.addShapelessAuto(new ItemStack(Items.clay_ball, 4), new Object[] { Blocks.clay }); //clay uncrafting because placing and breaking it isn't worth anyone's time
+		CraftingManager.addShapelessAuto(new ItemStack(Items.dye,32, 15), new Object[] {  ModItems.ammonium_nitrate, });
 		
 		//Other
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.ingot_steel_dusted, 1), new Object[] { STEEL.ingot(), COAL.dust() });
@@ -63,9 +64,10 @@ public class PowderRecipes {
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.powder_flux, 8), new Object[] { PB.dust(), S.dust(), KEY_SAND });
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.powder_flux, 12), new Object[] { CA.dust(), KEY_SAND });
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.powder_flux, 16), new Object[] { BORAX.dust(), KEY_SAND });
+		
+		CraftingManager.addShapelessAuto(new ItemStack(ModItems.powder_fertilizer, 4), new Object[] { CA.dust(), P_RED.dust(), ModItems.ammonium_nitrate });
 
-		CraftingManager.addShapelessAuto(new ItemStack(ModItems.powder_fertilizer, 4), new Object[] { CA.dust(), P_RED.dust(), KNO.dust(), S.dust() });
-		CraftingManager.addShapelessAuto(new ItemStack(ModItems.powder_fertilizer, 4), new Object[] { ANY_ASH.any(), P_RED.dust(), KNO.dust(), S.dust() });
+		CraftingManager.addShapelessAuto(new ItemStack(ModItems.powder_fertilizer, 4), new Object[] { ANY_ASH.any(), P_RED.dust(), KNO.dust(), ModItems.ammonium_nitrate});
 
 		if(GeneralConfig.enableLBSM && GeneralConfig.enableLBSMSimpleCrafting) {
 			CraftingManager.addShapelessAuto(new ItemStack(ModItems.powder_advanced_alloy, 4), new Object[] { REDSTONE.dust(), IRON.dust(), COAL.dust(), CU.dust() });

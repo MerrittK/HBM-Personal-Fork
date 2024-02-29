@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.hbm.tileentity.machine;
 
 import java.util.HashMap;

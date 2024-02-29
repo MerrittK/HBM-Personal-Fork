@@ -61,6 +61,7 @@ public class GeneralConfig {
 	public static boolean enableLBSMSafeCrates = true;
 	public static boolean enableLBSMSafeMEDrives = true;
 	public static boolean enableLBSMIGen = true;
+	public static boolean enableLBSMNeutronDecon = true;
 	public static int schrabRate = 20;
 	
 	public static void loadFromConfig(Configuration config) {
@@ -93,8 +94,10 @@ public class GeneralConfig {
 		enableImpactWorldProvider = config.get(CATEGORY_GENERAL, "1.32_enableImpactWorldProvider", true, "If enabled, registers custom world provider which modifies lighting and sky colors for post impact effects.").getBoolean(true);
 		enableStatReRegistering = config.get(CATEGORY_GENERAL, "1.33_enableStatReRegistering", true, "If enabled, will re-register item crafting/breaking/usage stats in order to fix a forge bug where modded items just won't show up.").getBoolean(true);
 		enableKeybindOverlap = config.get(CATEGORY_GENERAL, "1.34_enableKeybindOverlap", true, "If enabled, will handle keybinds that would otherwise be ignored due to overlapping.").getBoolean(true);
+
 		enableFluidContainerCompat = config.get(CATEGORY_GENERAL, "1.35_enableFluidContainerCompat", true, "If enabled, fluid containers will be oredicted and interchangable in recipes with other mods' containers, as well as TrainCraft's diesel being considered a valid diesel canister.").getBoolean(true);
 		
+
 		enableExpensiveMode = config.get(CATEGORY_GENERAL, "1.99_enableExpensiveMode", false, "It does what the name implies.").getBoolean(false);
 		
 		final String CATEGORY_528 = CommonConfig.CATEGORY_528;
@@ -137,6 +140,7 @@ public class GeneralConfig {
 		enableLBSMSafeCrates = CommonConfig.createConfigBool(config, CATEGORY_LBSM, "LBSM_safeCrates", "When enabled, prevents crates from becoming radioactive", true);
 		enableLBSMSafeMEDrives = CommonConfig.createConfigBool(config, CATEGORY_LBSM, "LBSM_safeMEDrives", "When enabled, prevents ME Drives and Portable Cells from becoming radioactive", true);
 		enableLBSMIGen = CommonConfig.createConfigBool(config, CATEGORY_LBSM, "LBSM_iGen", "When enabled, restores the industrial generator to pre-nerf power", true);
+		enableLBSMNeutronDecon = CommonConfig.createConfigBool(config, CATEGORY_LBSM, "LBSM_NeuCon", "When enabled, Player Decontaminators can decontaminate radioactive items stemmed from neutron rads.", true);
 		schrabRate = CommonConfig.createConfigInt(config, CATEGORY_LBSM, "LBSM_schrabOreRate", "Changes the amount of uranium ore needed on average to create one schrabidium ore using nukes. Standard mode value is 100", 20);
 		
 		if(enable528) enableLBSM = false;

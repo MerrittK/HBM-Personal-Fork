@@ -286,6 +286,62 @@ public class Gun4GaugeFactory {
 		return bullet;
 	}
 
+		public static BulletConfiguration get4GaugeLTBLConfig() {
+
+			BulletConfiguration bullet = BulletConfigFactory.standardGrenadeConfig();
+
+			bullet.ammo = new ComparableStack(ModItems.ammo_4gauge.stackFromEnum(Ammo4Gauge.LTBL));
+			bullet.velocity *= 3;
+			bullet.gravity *= 3;
+			bullet.dmgMin = 10;
+			bullet.dmgMax = 15;
+			bullet.setToFire(5);
+			bullet.wear = 25;
+			bullet.trail = 1;
+			bullet.explosive = 0.0F;
+
+			bullet.bntImpact = BulletConfigFactory.getFlashbangEffect(4,4*20,false);
+		bullet.spentCasing = CASING4GAUGE.clone().register("4GaSem").setColor(0x5C5C5C, SpentCasing.COLOR_CASE_4GA);
+
+		return bullet;
+	}
+		public static BulletConfiguration get4GaugeButterConfig() {
+
+			BulletConfiguration bullet = BulletConfigFactory.standardGrenadeConfig();
+
+			bullet.ammo = new ComparableStack(ModItems.ammo_4gauge.stackFromEnum(Ammo4Gauge.BUTTER));
+			bullet.velocity *= 5;
+			bullet.gravity *= 2;
+			bullet.dmgMin = 1;
+			bullet.dmgMax = 2;
+			bullet.wear = 75;
+			bullet.trail = 0;
+			bullet.explosive = 0.0F;
+
+			bullet.bntImpact = BulletConfigFactory.getButterBulletImpactBehaviorNT(4,4*80,false);
+		bullet.spentCasing = CASING4GAUGE.clone().register("4GaSem").setColor(0x5C5C5C, SpentCasing.COLOR_CASE_4GA);
+
+		return bullet;
+	}
+	public static BulletConfiguration get4GaugeLTBLSConfig() {
+
+		BulletConfiguration bullet = BulletConfigFactory.standardGrenadeConfig();
+
+		bullet.ammo = new ComparableStack(ModItems.ammo_4gauge.stackFromEnum(Ammo4Gauge.LTBL_SUPER));
+		bullet.velocity *= 3;
+		bullet.gravity *= 3;
+		bullet.dmgMin = 10;
+		bullet.dmgMax = 15;
+		bullet.setToFire(60);
+		bullet.wear = 25;
+		bullet.trail = 1;
+		bullet.explosive = 0.0F;
+
+		bullet.bntImpact = BulletConfigFactory.getFlashbangEffect(8,6*20,true);
+		bullet.spentCasing = CASING4GAUGE.clone().register("4GaSem").setColor(0x5C5C5C, SpentCasing.COLOR_CASE_4GA);
+
+		return bullet;
+	}
 	public static BulletConfiguration get4GaugeBalefireConfig() {
 		
 		BulletConfiguration bullet = BulletConfigFactory.standardGrenadeConfig();

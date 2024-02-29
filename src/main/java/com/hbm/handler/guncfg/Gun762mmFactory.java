@@ -11,6 +11,7 @@ import com.hbm.items.ItemAmmoEnums.Ammo762NATO;
 import com.hbm.lib.HbmCollection;
 import com.hbm.lib.RefStrings;
 import com.hbm.lib.HbmCollection.EnumGunManufacturer;
+import com.hbm.main.MainRegistry;
 import com.hbm.particle.SpentCasing;
 import com.hbm.particle.SpentCasing.CasingType;
 import com.hbm.potion.HbmPotion;
@@ -21,6 +22,8 @@ import com.hbm.render.util.RenderScreenOverlay.Crosshair;
 
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
+
+import static com.hbm.handler.GunConfiguration.RELOAD_FULL;
 
 public class Gun762mmFactory {
 	
@@ -47,7 +50,7 @@ public class Gun762mmFactory {
 		config.reloadDuration = 20;
 		config.firingDuration = 0;
 		config.ammoCap = 50;
-		config.reloadType = GunConfiguration.RELOAD_FULL;
+		config.reloadType = RELOAD_FULL;
 		config.allowsInfinity = true;
 		config.crosshair = Crosshair.NONE;
 		config.durability = 15 * 50 * 10; //15 * capacity * default wear
@@ -283,11 +286,14 @@ public class Gun762mmFactory {
 		
 		return config;
 	}
+	
+
 
 	public static BulletConfiguration get762NATOConfig() {
 		final BulletConfiguration bullet = Gun556mmFactory.get556Config().clone();
 
 		bullet.ammo = new ComparableStack(ModItems.ammo_762.stackFromEnum(Ammo762NATO.STOCK));
+
 		bullet.dmgMax = 20;
 		bullet.dmgMin = 24;
 		bullet.velocity *= 2.5;
@@ -303,6 +309,8 @@ public class Gun762mmFactory {
 		final BulletConfiguration bullet = get762NATOConfig();
 
 		bullet.ammo = new ComparableStack(ModItems.ammo_762.stackFromEnum(Ammo762NATO.AP));
+		bullet.doesPenetrate = true;
+
 		bullet.dmgMax = 24;
 		bullet.dmgMin = 28;
 		
@@ -315,9 +323,9 @@ public class Gun762mmFactory {
 		final BulletConfiguration bullet = get762NATOConfig();
 
 		bullet.ammo = new ComparableStack(ModItems.ammo_762.stackFromEnum(Ammo762NATO.DU));
+		bullet.doesPenetrate = true;
 		bullet.dmgMax = 36;
 		bullet.dmgMin = 40;
-		
 		bullet.spentCasing = CASING762NATO.clone().register("762NATODU");
 
 		return bullet;
@@ -342,7 +350,7 @@ public class Gun762mmFactory {
 		bullet.vPFX = "reddust";
 		final PotionEffect eff = new PotionEffect(HbmPotion.phosphorus.id, 20 * 20, 0, true);
 		eff.getCurativeItems().clear();
-		bullet.effects = new ArrayList<PotionEffect>();
+		bullet.effects = new ArrayList<>();
 		bullet.effects.add(new PotionEffect(eff));
 		
 		bullet.spentCasing = CASING762NATO.clone().register("762NATOPhos");

@@ -281,6 +281,7 @@ public class BlockMotherOfAllOres extends BlockContainer implements IBlockMultiP
 			if(name.getItemDamage() == OreDictionary.WILDCARD_VALUE) {
 				name.setItemDamage(0);
 			}
+			//return I18nUtil.resolveKey(this.getUnlocalizedName() + ".name", name.getItem().getItemStackDisplayName(name));
 			return StatCollector.translateToLocalFormatted(this.getUnlocalizedName() + ".name", name.getItem().getItemStackDisplayName(name));
 		}
 	}

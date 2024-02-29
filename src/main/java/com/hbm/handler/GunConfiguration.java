@@ -6,11 +6,16 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import com.hbm.lib.HbmCollection.EnumGunManufacturer;
+import com.hbm.packet.AuxParticlePacketNT;
+import com.hbm.packet.PacketDispatcher;
 import com.hbm.render.anim.BusAnimation;
 import com.hbm.render.anim.HbmAnimations.AnimType;
 import com.hbm.render.util.RenderScreenOverlay.Crosshair;
 
+import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 
 public class GunConfiguration implements Cloneable {
 	
@@ -34,6 +39,11 @@ public class GunConfiguration implements Cloneable {
 	public int firingMode;
 	//weapon won't fire after weapon breaks (main only)
 	public int durability;
+	
+	public World dimWorld;
+	public int x;
+	public int y;
+	public int z;
 	
 	//animations!
 	public HashMap<AnimType, BusAnimation> animations = new HashMap<AnimType, BusAnimation>();
@@ -126,5 +136,12 @@ public class GunConfiguration implements Cloneable {
 		this.firingSound = "hbm:weapon.silencerShoot";
 		return this;
 	}
-
+	public static void spawnParticles(World world, double x, double y, double z, int count) {
+		
+		NBTTagCompound data = new NBTTagCompound();
+		data.setString("type", "smoke");
+		data.setString("mode", "cloud");
+		data.setInteger("count", count);
+		PacketDispatcher.wrapper.sendToAllAround(new AuxParticlePacketNT(data, x, y, z),  new TargetPoint(world.provider.dimensionId, x, y, z, 250));
+	}
 }

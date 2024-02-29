@@ -55,6 +55,14 @@ public class FluidTraitSimple {
 			info.add(EnumChatFormatting.DARK_GREEN + "[Delicious]");
 		}
 	}
+	public static class FT_ULTRAKILL extends FluidTrait {
+		@Override public void addInfoHidden(List<String> info) {
+		info.add(EnumChatFormatting.DARK_RED + "[ULTRAKILL]");
+	}}
+	public static class FT_EXPLOSIVE extends FluidTrait {
+		@Override public void addInfoHidden(List<String> info) {
+		info.add(EnumChatFormatting.RED + "[Explosive]");
+	}}
 	
 	public static class FT_Leaded extends FluidTrait {
 		@Override public void addInfoHidden(List<String> info) {

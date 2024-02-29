@@ -206,6 +206,7 @@ public class MainRegistry {
 	public static Achievement digammaKnow;
 	public static Achievement digammaKauaiMoho;
 	public static Achievement digammaUpOnTop;
+	public static Achievement rotConsum;
 	
 	public static Achievement achBurnerPress;
 	public static Achievement achBlastFurnace;
@@ -710,7 +711,8 @@ public class MainRegistry {
 		digammaKnow = new Achievement("achievement.digammaKnow", "digammaKnow", 3, 8, DictFrame.fromOne(ModItems.achievement_icon, EnumAchievementType.DIGAMMAKNOW), digammaFeel).initIndependentStat().registerStat().setSpecial();
 		digammaKauaiMoho = new Achievement("achievement.digammaKauaiMoho", "digammaKauaiMoho", 5, 8, DictFrame.fromOne(ModItems.achievement_icon, EnumAchievementType.DIGAMMAKAUAIMOHO), digammaKnow).initIndependentStat().registerStat().setSpecial();
 		digammaUpOnTop = new Achievement("achievement.digammaUpOnTop", "digammaUpOnTop", 7, 8, DictFrame.fromOne(ModItems.achievement_icon, EnumAchievementType.DIGAMMAUPONTOP), digammaKauaiMoho).initIndependentStat().registerStat().setSpecial();
-		
+		//rotConsum = new Achievement("achievement.rotConsum", "rotConsum", 7, 8, ModItems.rot_consumes, null).initIndependentStat().registerStat().setSpecial();
+
 		//progression achieves
 		achBurnerPress = new Achievement("achievement.burnerPress", "burnerPress", 0, 0, new ItemStack(ModBlocks.machine_press), null).initIndependentStat().registerStat();
 		achBlastFurnace = new Achievement("achievement.blastFurnace", "blastFurnace", 1, 3, new ItemStack(ModBlocks.machine_difurnace_off), achBurnerPress).initIndependentStat().registerStat();

@@ -26,8 +26,10 @@ public class ItemMissile extends ItemCustomLore {
 		this.setFuelCap(this.fuel.defaultCap);
 	}
 	
+
 	public ItemMissile setFuelCap(int fuelCap) {
 		this.fuelCap = fuelCap;
+
 		return this;
 	}
 	
@@ -82,6 +84,7 @@ public class ItemMissile extends ItemCustomLore {
 		private MissileFuel(String display, int defaultCap) {
 			this.display = display;
 			this.defaultCap = defaultCap;
+
 		}
 	}
 }

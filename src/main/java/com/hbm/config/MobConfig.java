@@ -24,7 +24,7 @@ public class MobConfig {
 	public static int elementalChance = 2;
 	public static int elementalAmount = 10;
 	public static int elementalDistance = 32;
-
+	
 	public static boolean enableDucks = true;
 	public static boolean enableMobGear = true;
 	
@@ -70,7 +70,7 @@ public class MobConfig {
 	public static void loadFromConfig(Configuration config) {
 
 		final String CATEGORY = CommonConfig.CATEGORY_MOBS;
-
+		
 		enableMaskman = CommonConfig.createConfigBool(config, CATEGORY, "12.M00_enableMaskman", "Whether mask man should spawn", true);
 		maskmanDelay = CommonConfig.createConfigInt(config, CATEGORY, "12.M01_maskmanDelay", "How many world ticks need to pass for a check to be performed", 60 * 60 * 60);
 		maskmanChance = CommonConfig.createConfigInt(config, CATEGORY, "12.M02_maskmanChance", "1:x chance to spawn mask man, must be at least 1", 3);

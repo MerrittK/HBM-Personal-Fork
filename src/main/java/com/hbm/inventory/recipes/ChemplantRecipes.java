@@ -16,10 +16,12 @@ import static com.hbm.inventory.OreDictManager.*;
 import com.hbm.inventory.RecipesCommon.AStack;
 import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.inventory.RecipesCommon.OreDictStack;
+import com.hbm.inventory.fluid.FluidType;
 import com.hbm.inventory.fluid.Fluids;
 import com.hbm.inventory.recipes.loader.SerializableRecipe;
 import com.hbm.items.ModItems;
 import com.hbm.main.MainRegistry;
+
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -69,11 +71,7 @@ public class ChemplantRecipes extends SerializableRecipe {
 				.inputItems(new OreDictStack(S.dust()))
 				.inputFluids(new FluidStack(Fluids.ACID, 800))
 				.outputFluids(new FluidStack(Fluids.SULFURIC_ACID, 500)));
-		recipes.add(new ChemRecipe(92, "NITRIC_ACID", 50)
-				.inputItems(new OreDictStack(KNO.dust()))
-				.inputFluids(new FluidStack(Fluids.SULFURIC_ACID, 500))
-				.outputFluids(new FluidStack(Fluids.NITRIC_ACID, 500)));
-		recipes.add(new ChemRecipe(93, "SOLVENT", 50)
+		recipes.add(new ChemRecipe(92, "SOLVENT", 50)
 				.inputFluids(new FluidStack(Fluids.NAPHTHA, 500), new FluidStack(Fluids.AROMATICS, 500))
 				.outputFluids(new FluidStack(Fluids.SOLVENT, 1000)));
 		recipes.add(new ChemRecipe(41, "CIRCUIT_4", 200)
@@ -104,7 +102,9 @@ public class ChemplantRecipes extends SerializableRecipe {
 						new FluidStack(Fluids.PETROLEUM, 500, GeneralConfig.enable528 ? 1 : 0))
 				.outputItems(new ItemStack(ModItems.ingot_bakelite)));
 		recipes.add(new ChemRecipe(82, "RUBBER", 100)
-				.inputItems(new OreDictStack(S.dust()))
+						.inputItems(
+						new OreDictStack(S.dust()),
+						new OreDictStack(ZI.dust()))
 				.inputFluids(new FluidStack(Fluids.UNSATURATEDS, 500, GeneralConfig.enable528 ? 2 : 0))
 				.outputItems(new ItemStack(ModItems.ingot_rubber)));
 		/*recipes.add(new ChemRecipe(94, "PET", 100)
@@ -379,43 +379,141 @@ public class ChemplantRecipes extends SerializableRecipe {
 				.inputItems(new OreDictStack(DIAMOND.dust(), 1))
 				.inputFluids(new FluidStack(Fluids.XPJUICE, 500))
 				.outputFluids(new FluidStack(Fluids.ENDERJUICE, 100)));
-		recipes.add(new ChemRecipe(98, "SHELL_CHLORINE", 100)
+		//recipes.add(new ChemRecipe(99, "NITROCRYO", 150)
+				//.inputItems(new ComparableStack(ModItems.powder_ice, 4))
+				//.inputFluids(new FluidStack(Fluids.BLOOD, 1000))
+				//.outputItems(new ItemStack(Blocks.sand, 4))
+				//.outputFluids(new FluidStack(Fluids.NITROGEN, 1000)));
+		recipes.add(new ChemRecipe(99, "NITROACID", 100)
+				.inputFluids(new FluidStack(Fluids.AMMONIA, 1000), new FluidStack(Fluids.WATER, 500))
+				.outputFluids(new FluidStack(Fluids.NITRIC_ACID, 1000)));
+		recipes.add(new ChemRecipe(100, "HYDRAZINE", 250)
+				.inputFluids(new FluidStack(Fluids.NITRIC_ACID, 2000), new FluidStack(Fluids.AMMONIA, 1000))
+				.outputFluids(new FluidStack(Fluids.HYDRAZINE, 800)));
+		recipes.add(new ChemRecipe(101, "AMONGUS", 250)
+				.inputFluids(new FluidStack(Fluids.NITROGEN, 600), new FluidStack(Fluids.WATER, 1000))
+				.outputFluids(new FluidStack(Fluids.AMMONIA, 800)));
+		recipes.add(new ChemRecipe(102, "BLOODFUEL", 250)
+				.inputFluids(new FluidStack(Fluids.AMMONIA, 350), new FluidStack(Fluids.BLOOD, 800))
+				.outputFluids(new FluidStack(Fluids.BLOODGAS, 1000)));
+		recipes.add(new ChemRecipe(103, "HCL", 250)
+				.inputFluids(new FluidStack(Fluids.HYDROGEN, 300), new FluidStack(Fluids.CHLORINE, 1000))
+				.outputFluids(new FluidStack(Fluids.HCL, 400)));
+		recipes.add(new ChemRecipe(104, "AMMONIUM", 250)
+				.inputFluids(new FluidStack(Fluids.AMMONIA, 500), new FluidStack(Fluids.NITROGEN, 1000))
+				.outputItems(new ItemStack(ModItems.ammonium_nitrate, 4)));
+		recipes.add(new ChemRecipe(105, "ARSENIDE", 250)
+				.inputFluids(new FluidStack(Fluids.WATER, 500), new FluidStack(Fluids.LIGHTOIL, 900))
+				.inputItems(
+						new ComparableStack(ModItems.nugget_gallium),
+						new ComparableStack(ModItems.nugget_arsenic))
+				.outputItems(new ItemStack(ModItems.nugget_gaas, 1)));
+		recipes.add(new ChemRecipe(106, "ANIMAN", 250)
+				.inputFluids(new FluidStack(Fluids.OLIVEOIL, 500))
+				.inputItems(
+						new ComparableStack(ModItems.canned_conserve, 1, 5))
+				.outputItems(new ItemStack(ModItems.animan, 1)));
+		recipes.add(new ChemRecipe(107, "ELBOWS", 250)
+				.inputFluids(new FluidStack(Fluids.ACID, 100), new FluidStack(Fluids.ELBOWGREASE, 900))
+				.inputItems(
+						new ComparableStack(ModBlocks.sand_dirty, 20))
+				.outputItems(new ItemStack(ModItems.ingot_iridium, 1)));
+		recipes.add(new ChemRecipe(108, "ELBOMB", 300)
+				.inputFluids(new FluidStack(Fluids.ELBOWGREASE, 100))
+				.inputItems(
+						new ComparableStack(ModItems.ingot_lead, 1),
+						new OreDictStack(ANY_SMOKELESS.dust(), 1))
+				.outputItems(new ItemStack(ModItems.assembly_smg, 32))); //9mm
+		recipes.add(new ChemRecipe(109, "ELBOOB", 350)
+				.inputFluids(new FluidStack(Fluids.ELBOWGREASE, 100))
+				.inputItems(
+						new ComparableStack(ModItems.ingot_copper, 1),
+						new OreDictStack(ANY_SMOKELESS.dust(), 1))
+				.outputItems(new ItemStack(ModItems.assembly_762, 32))); //762
+		recipes.add(new ChemRecipe(110, "ELGORE", 250)
+				.inputFluids(new FluidStack(Fluids.ELBOWGREASE, 100))
+				.inputItems(
+						new ComparableStack(ModItems.ingot_copper, 1),
+						new ComparableStack(ModItems.ingot_lead, 1),
+						new OreDictStack(ANY_SMOKELESS.dust(), 1))
+				.outputItems(new ItemStack(ModItems.assembly_556, 32))); //556
+		recipes.add(new ChemRecipe(111, "FIVEFIVE", 300)
+				.inputFluids(new FluidStack(Fluids.ELBOWGREASE, 100))
+				.inputItems(
+						new ComparableStack(ModItems.ingot_copper, 1),
+						new ComparableStack(ModItems.ingot_steel, 1),
+						new OreDictStack(ANY_SMOKELESS.dust(), 1))
+				.outputItems(new ItemStack(ModItems.assembly_lacunae, 32))); //5mm
+		recipes.add(new ChemRecipe(112, "NMASSIII", 300)
+				.inputFluids(new FluidStack(Fluids.DEATH, 7000), (new FluidStack(Fluids.ELBOWGREASE, 6000)))
+				.inputItems(
+						new ComparableStack(ModBlocks.dfc_core, 1),
+						new ComparableStack(ModBlocks.block_euphemium, 32),
+						new OreDictStack(ANY_SMOKELESS.dust(), 1))
+				.outputFluids(new FluidStack(Fluids.NMASSTETRANOL, 100), new FluidStack(Fluids.ETHANOL, 24000)));
+		recipes.add(new ChemRecipe(113, "NMASSII", 300)
+				.inputFluids(new FluidStack(Fluids.SCHRABIDIC, 650), (new FluidStack(Fluids.IONGEL, 800)))
+				.inputItems(
+						new ComparableStack(ModItems.pellet_charged, 1),
+						new ComparableStack(ModItems.ingot_euphemium, 1))
+				.outputFluids(new FluidStack(Fluids.NMASS, 1000), new FluidStack(Fluids.WASTEGAS, 2000)));
+		recipes.add(new ChemRecipe(114, "LUNAE", 250)
+				.inputFluids(new FluidStack(Fluids.NMASS, 3000), new FluidStack(Fluids.ASCHRAB, 500)) //eventually used to actually warp to other stars
+				.inputItems(
+						new ComparableStack(ModItems.powder_power, 5),
+						new ComparableStack(ModItems.ingot_ferrouranium, 1),
+						new ComparableStack(ModItems.ingot_copper, 1),
+						new OreDictStack(ANY_SMOKELESS.dust(), 1))
+				.outputItems(new ItemStack(ModItems.ammo_luna_sniper, 1, 3))); //556
+		recipes.add(new ChemRecipe(115, "SHELL_CHLORINE", 100)
 				.inputItems(
 						new ComparableStack(ModItems.ammo_arty, 1, 0),
 						new OreDictStack(ANY_PLASTIC.ingot(), 1))
 				.inputFluids(new FluidStack(Fluids.CHLORINE, 4000))
 				.outputItems(new ItemStack(ModItems.ammo_arty, 1, 9)));
-		recipes.add(new ChemRecipe(99, "SHELL_PHOSGENE", 100)
+		recipes.add(new ChemRecipe(116, "SHELL_PHOSGENE", 100)
 				.inputItems(
 						new ComparableStack(ModItems.ammo_arty, 1, 0),
 						new OreDictStack(ANY_PLASTIC.ingot(), 1))
 				.inputFluids(new FluidStack(Fluids.PHOSGENE, 4000))
 				.outputItems(new ItemStack(ModItems.ammo_arty, 1, 10)));
-		recipes.add(new ChemRecipe(100, "SHELL_MUSTARD", 100)
+		recipes.add(new ChemRecipe(117, "SHELL_MUSTARD", 100)
 				.inputItems(
 						new ComparableStack(ModItems.ammo_arty, 1, 0),
 						new OreDictStack(ANY_PLASTIC.ingot(), 1))
 				.inputFluids(new FluidStack(Fluids.MUSTARDGAS, 4000))
 				.outputItems(new ItemStack(ModItems.ammo_arty, 1, 11)));
-		recipes.add(new ChemRecipe(101, "CC_CENTRIFUGE", 200)
+		recipes.add(new ChemRecipe(118, "CC_CENTRIFUGE", 200)
 				.inputFluids(new FluidStack(Fluids.CHLOROCALCITE_CLEANED, 500), new FluidStack(Fluids.SULFURIC_ACID, 8_000))
 				.outputFluids(new FluidStack(Fluids.POTASSIUM_CHLORIDE, 250), new FluidStack(Fluids.CALCIUM_CHLORIDE, 250)));
-		
-		recipes.add(new ChemRecipe(102, "THORIUM_SALT", 60)
+		recipes.add(new ChemRecipe(119, "THORIUM_SALT", 60)
 				.inputFluids(new FluidStack(Fluids.THORIUM_SALT_DEPLETED, 16_000))
 				.inputItems(new OreDictStack(TH232.nugget(), 2))
 				.outputFluids(new FluidStack(Fluids.THORIUM_SALT, 16_000))
 				.outputItems(
 						new ItemStack(ModItems.nugget_u233, 1),
 						new ItemStack(ModItems.nuclear_waste_tiny, 1)));
-
-		recipes.add(new ChemRecipe(103, "MEAT_PROCESSING", 200)
-				.inputItems(new OreDictStack(KEY_GLYPHID_MEAT, 3))
-				.inputFluids(new FluidStack(Fluids.SULFURIC_ACID, 1000))
-				.outputItems(new ItemStack(ModItems.sulfur, 4),
-						new ItemStack(ModItems.niter, 3))
-				.outputFluids(new FluidStack(Fluids.SALIENT, 250)));
-
+		
+		recipes.add(new ChemRecipe(120, "MASS_CAKE", 30)
+				.inputFluids(new FluidStack(Fluids.CMILK, 4000), new FluidStack(Fluids.CREAM, 1000)) // why not regular milk? well its because the refined products allow for higher mass cakes while still needing less milk
+				.inputItems(
+						new ComparableStack(Items.sugar, 8),				// if there is a hole in my logic i will shoot myself
+						new ComparableStack(Items.egg, 4))				//ex: since a cake needs 3 buckets of milk, c-milk is more dense, leading to it being only 4 buckets of condensed milk, thats 1 bucket per cake. 
+				.outputItems(
+						new ItemStack(Items.cake, 4)));
+		
+		recipes.add(new ChemRecipe(121, "BUTTER", 50)
+				.inputFluids(new FluidStack(Fluids.EMILK, 1000)) 
+				.outputItems(
+						new ItemStack(ModItems.butter)));
+		recipes.add(new ChemRecipe(122, "STRAWICE", 50)
+				.inputFluids(new FluidStack(Fluids.CREAM, 1000)) 
+				.inputItems(
+				new ComparableStack(ModItems.butter, 2),
+				new ComparableStack(Blocks.packed_ice, 1),
+				new ComparableStack(ModItems.strawberry, 4))
+				.outputItems(
+						new ItemStack(ModItems.s_cream, 4)));
 	}
 
 	public static void registerOtherOil() {

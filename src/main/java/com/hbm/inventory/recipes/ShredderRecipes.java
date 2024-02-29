@@ -22,6 +22,7 @@ import com.hbm.items.special.ItemBedrockOre.EnumBedrockOre;
 import com.hbm.main.MainRegistry;
 import com.hbm.util.Compat;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -205,6 +206,26 @@ public class ShredderRecipes extends SerializableRecipe {
 		ShredderRecipes.setRecipe(Items.reeds, new ItemStack(Items.sugar, 3));
 		ShredderRecipes.setRecipe(Items.apple, new ItemStack(Items.sugar, 1));
 		ShredderRecipes.setRecipe(Items.carrot, new ItemStack(Items.sugar, 1));
+		ShredderRecipes.setRecipe(ModItems.crystal_cleaned, new ItemStack(ModItems.mineral_dust, 4));
+		ShredderRecipes.setRecipe(ModBlocks.ore_mineral, new ItemStack(ModItems.mineral_dust, 1)); // it was deserved
+
+		
+		ShredderRecipes.setRecipe(ModItems.bean_roast,  new ItemStack(ModItems.powder_coffee, 1));
+		
+		//BYPRODUCTS
+		//ShredderRecipes.setRecipe(new ItemStack(ModItems.ore_byproduct, 1, 0), new ItemStack(ModItems.powder_iron, 10));
+		//ShredderRecipes.setRecipe(new ItemStack(ModItems.ore_byproduct, 1, 1), new ItemStack(ModItems.powder_copper, 10));
+		//ShredderRecipes.setRecipe(new ItemStack(ModItems.ore_byproduct, 1, 2), new ItemStack(ModItems.powder_lithium, 10));
+		//ShredderRecipes.setRecipe(new ItemStack(ModItems.ore_byproduct, 1, 3), new ItemStack(ModItems.powder_quartz, 8));
+		//ShredderRecipes.setRecipe(new ItemStack(ModItems.ore_byproduct, 1, 4), new ItemStack(ModItems.powder_lead, 6));
+		//ShredderRecipes.setRecipe(new ItemStack(ModItems.ore_byproduct, 1, 5), new ItemStack(ModItems.powder_titanium, 9));
+		//ShredderRecipes.setRecipe(new ItemStack(ModItems.ore_byproduct, 1, 6), new ItemStack(ModItems.powder_aluminium, 12));
+	//	ShredderRecipes.setRecipe(new ItemStack(ModItems.ore_byproduct, 1, 7), new ItemStack(ModItems.sulfur, 6));
+		//ShredderRecipes.setRecipe(new ItemStack(ModItems.ore_byproduct, 1, 8), new ItemStack(Items.bone, 4));
+		//ShredderRecipes.setRecipe(new ItemStack(ModItems.ore_byproduct, 2, 9), new ItemStack(ModItems.nugget_bismuth, 1));
+		
+
+		ShredderRecipes.setRecipe(DictFrame.fromOne(ModBlocks.stone_resource, EnumStoneType.LIMESTONE), new ItemStack(ModItems.powder_calcium, 4));
 		ShredderRecipes.setRecipe(ModItems.can_empty, new ItemStack(ModItems.powder_aluminium, 2));
 		ShredderRecipes.setRecipe(ModBlocks.machine_well, new ItemStack(ModItems.powder_steel, 32));
 		ShredderRecipes.setRecipe(DictFrame.fromOne(ModItems.chunk_ore, EnumChunkType.RARE), new ItemStack(ModItems.powder_desh_mix));

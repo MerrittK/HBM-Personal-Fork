@@ -2,6 +2,7 @@ package com.hbm.util;
 
 import java.util.HashSet;
 
+import com.hbm.config.RadiationConfig;
 import com.hbm.entity.mob.EntityDuck;
 import com.hbm.entity.mob.EntityCreeperNuclear;
 import com.hbm.entity.mob.EntityQuackos;
@@ -70,7 +71,7 @@ public class ContaminationUtil {
 			immuneEntities.add(EntityZombie.class);
 			immuneEntities.add(EntitySkeleton.class);
 			immuneEntities.add(EntityQuackos.class);
-			immuneEntities.add(EntityOcelot.class);
+			//immuneEntities.add(EntityOcelot.class);
 			immuneEntities.add(IRadiationImmune.class);
 		}
 		
@@ -158,7 +159,7 @@ public class ContaminationUtil {
 		World world = player.worldObj;
 
 		double eRad = ((int)(HbmLivingProps.getRadiation(player) * 10)) / 10D;
-
+		
 		double rads = ((int)(ChunkRadiationManager.proxy.getRadiation(world, (int) Math.floor(player.posX), (int) Math.floor(player.posY), (int) Math.floor(player.posZ)) * 10)) / 10D;
 		double env = ((int)(HbmLivingProps.getRadBuf(player) * 10D)) / 10D;
 		
@@ -191,7 +192,7 @@ public class ContaminationUtil {
 		player.addChatMessage(new ChatComponentText("===== ☢ ").appendSibling(new ChatComponentTranslation("geiger.title")).appendSibling(new ChatComponentText(" ☢ =====")).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.GOLD)));
 		player.addChatMessage(new ChatComponentTranslation("geiger.chunkRad").appendSibling(new ChatComponentText(" " + chunkPrefix + rads + " RAD/s")).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW)));
 		player.addChatMessage(new ChatComponentTranslation("geiger.envRad").appendSibling(new ChatComponentText(" " + envPrefix + env + " RAD/s")).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW)));
-		player.addChatMessage(new ChatComponentTranslation("geiger.playerRad").appendSibling(new ChatComponentText(" " + radPrefix + eRad + " RAD")).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW)));
+		player.addChatMessage(new ChatComponentTranslation("geiger.playerRad").appendSibling(new ChatComponentText(" " + radPrefix + eRad + " RAD")).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW)));		
 		player.addChatMessage(new ChatComponentTranslation("geiger.playerRes").appendSibling(new ChatComponentText(" " + resPrefix + res + "% (" + resKoeff + ")")).setChatStyle(new ChatStyle().setColor(EnumChatFormatting.YELLOW)));
 	}
 	

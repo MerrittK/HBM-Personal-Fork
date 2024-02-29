@@ -47,6 +47,9 @@ public class RenderBobble extends TileEntitySpecialRenderer {
 	public static final ResourceLocation bobble_nos = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/nos.png");
 	public static final ResourceLocation bobble_drillgon = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/drillgon200.png");
 	public static final ResourceLocation bobble_cirno = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/cirno.png");
+	public static final ResourceLocation bobble_gwen = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/gwen.png");
+	public static final ResourceLocation bobble_juice = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/Juicy_Lad.png");
+	public static final ResourceLocation bobble_jamesh_2= new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/JamesH_2.png");	
 	public static final ResourceLocation bobble_microwave = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/microwave.png");
 	public static final ResourceLocation bobble_peep = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/peep.png");
 	public static final ResourceLocation bobble_mellow = new ResourceLocation(RefStrings.MODID, "textures/models/trinkets/mellowrpg8.png");
@@ -99,6 +102,9 @@ public class RenderBobble extends TileEntitySpecialRenderer {
 		case VAER:		bindTexture(bobble_vaer); break;
 		case NOS:		bindTexture(bobble_nos); break;
 		case DRILLGON:	bindTexture(bobble_drillgon); break;
+		case GWEN:		bindTexture(bobble_gwen); break;
+		case JUICE:		bindTexture(bobble_juice); break;
+		case JAMESH_2:	bindTexture(bobble_jamesh_2); break;
 		case MICROWAVE:	bindTexture(bobble_microwave); break;
 		case PEEP:		bindTexture(bobble_peep); break;
 		case MELLOW:	bindTexture(bobble_mellow); break;

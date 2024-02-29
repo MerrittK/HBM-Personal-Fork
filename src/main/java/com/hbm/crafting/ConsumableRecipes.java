@@ -30,6 +30,7 @@ public class ConsumableRecipes {
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.bomb_caller, 1, 2), new Object[] { "TTT", "TRT", "TTT", 'T', ModItems.pellet_gas, 'R', ModItems.detonator_laser });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.bomb_caller, 1, 3), new Object[] { "TRT", 'T', ModItems.grenade_cloud, 'R', ModItems.detonator_laser });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.bomb_caller, 1, 4), new Object[] { "TR", 'T', ModItems.ammo_nuke.stackFromEnum(AmmoFatman.HIGH), 'R', ModItems.detonator_laser });
+		CraftingManager.addRecipeAuto(new ItemStack(ModItems.bomb_caller, 1, 8), new Object[] { "TRG", 'T', ModItems.iv_blood,'G',ModItems.acetylene_torch, 'R', ModItems.detonator_laser });
 
 		//Food
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.bomb_waffle, 1), new Object[] { "WEW", "MPM", "WEW", 'W', Items.wheat, 'E', Items.egg, 'M', Items.milk_bucket, 'P', ModItems.man_core });
@@ -46,6 +47,7 @@ public class ConsumableRecipes {
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.tem_flakes, 1, 1), new Object[] { GOLD.nugget(), GOLD.nugget(), GOLD.nugget(), Items.paper });
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.tem_flakes, 1, 2), new Object[] { GOLD.ingot(), GOLD.ingot(), GOLD.nugget(), GOLD.nugget(), Items.paper });
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.glowing_stew, 1), new Object[] { Items.bowl, Item.getItemFromBlock(ModBlocks.mush), Item.getItemFromBlock(ModBlocks.mush) });
+		CraftingManager.addShapelessAuto(new ItemStack(ModItems.flesh_burger), new Object[] {Items.bread, ModItems.grilled_flesh});
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.balefire_scrambled, 1), new Object[] { Items.bowl, ModItems.egg_balefire });
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.balefire_and_ham, 1), new Object[] { ModItems.balefire_scrambled, Items.cooked_beef });
 		CraftingManager.addShapelessAuto(new ItemStack(ModItems.med_ipecac, 1), new Object[] { Items.glass_bottle, Items.nether_wart });

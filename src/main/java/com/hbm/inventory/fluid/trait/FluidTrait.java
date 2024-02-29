@@ -40,6 +40,10 @@ public abstract class FluidTrait {
 		traitNameMap.put("noid", FT_NoID.class);
 		traitNameMap.put("nocontainer", FT_NoContainer.class);
 		traitNameMap.put("unsiphonable", FT_Unsiphonable.class);
+
+		traitNameMap.put("explosive", FT_EXPLOSIVE.class);	// x
+		traitNameMap.put("uk", FT_ULTRAKILL.class);	// x
+
 	}
 
 	/** Important information that should always be displayed */

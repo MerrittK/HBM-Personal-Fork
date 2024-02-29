@@ -4,11 +4,23 @@ import java.awt.Color;
 import java.util.List;
 
 import com.hbm.blocks.ModBlocks;
+
 import com.hbm.entity.mob.glyphid.EntityGlyphid;
+import com.hbm.explosion.ExplosionLarge;
+
+
 import com.hbm.extprop.HbmLivingProps;
 import com.hbm.handler.radiation.ChunkRadiationManager;
 import com.hbm.inventory.fluid.FluidType;
 import com.hbm.inventory.fluid.Fluids;
+import com.hbm.inventory.fluid.trait.FT_Combustible;
+import com.hbm.inventory.fluid.trait.FT_Corrosive;
+import com.hbm.inventory.fluid.trait.FT_Flammable;
+import com.hbm.inventory.fluid.trait.FT_Poison;
+import com.hbm.inventory.fluid.trait.FT_Toxin;
+import com.hbm.inventory.fluid.trait.FT_VentRadiation;
+import com.hbm.inventory.fluid.trait.FluidTraitSimple.FT_EXPLOSIVE;
+import com.hbm.inventory.fluid.trait.FluidTraitSimple.FT_ULTRAKILL;
 import com.hbm.inventory.fluid.trait.*;
 import com.hbm.lib.ModDamageSource;
 import com.hbm.main.MainRegistry;
@@ -246,7 +258,12 @@ public class EntityChemical extends EntityThrowableNT {
 				}
 			}
 		}
-		
+		if(type.hasTrait(FT_ULTRAKILL.class)) {
+			FT_ULTRAKILL trait = type.getTrait(FT_ULTRAKILL.class);
+			if(living != null && living.isEntityAlive()) {
+				living.heal(10F * (float) intensity); //blood is simply better lole
+			}
+		}
 		if(type.hasTrait(FT_VentRadiation.class)) {
 			FT_VentRadiation trait = type.getTrait(FT_VentRadiation.class);
 			if(living != null) {
@@ -468,6 +485,12 @@ public class EntityChemical extends EntityThrowableNT {
 				}
 				
 				Block block = worldObj.getBlock(x, y, z);
+				if(type.hasTrait(FT_EXPLOSIVE.class)) {
+					int eX = mop.blockX;
+					int eY = mop.blockY;
+					int eZ = mop.blockZ;
+					worldObj.createExplosion(thrower, eX, eY, eZ, 1, addedToChunk);
+				}
 				if(type == Fluids.SEEDSLURRY) {
 					if(block == Blocks.dirt || block == ModBlocks.waste_earth || block == ModBlocks.dirt_dead || block == ModBlocks.dirt_oily) {
 						
@@ -485,6 +508,7 @@ public class EntityChemical extends EntityThrowableNT {
 				
 				this.setDead();
 			}
+			
 		}
 	}
 

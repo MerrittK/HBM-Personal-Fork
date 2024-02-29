@@ -70,6 +70,8 @@ public abstract class SerializableRecipe {
 		recipeHandlers.add(new AssemblerRecipes());
 		
 		recipeHandlers.add(new MatDistribution());
+		recipeHandlers.add(new CryoRecipes());
+
 		recipeHandlers.add(new CustomMachineRecipes());
 	}
 	

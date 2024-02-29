@@ -59,6 +59,8 @@ public class NEIConfig implements IConfigureNEI {
 		registerHandler(new CrucibleCastingHandler());
 		registerHandler(new ToolingHandler());
 		registerHandler(new ConstructionHandler());
+		registerHandler(new CryoHandler());
+
 		
 		//universal boyes
 		registerHandler(new ZirnoxRecipeHandler());

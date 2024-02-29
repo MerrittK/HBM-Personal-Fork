@@ -10,7 +10,6 @@ public interface IBlockMultiPass {
 	public static int getRenderType() {
 		return renderID;
 	}
-	
 	public default boolean shouldRenderItemMulti() {
 		return false;
 	}

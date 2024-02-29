@@ -101,7 +101,9 @@ public class ExplosionNukeGeneric {
 	@Spaghetti("just look at it")
 	private static boolean isExplosionExempt(Entity e) {
 		
+
 		if (e instanceof EntityOcelot ||
+
 				e instanceof EntityMIRV ||
 				e instanceof EntityGrenadeASchrab ||
 				e instanceof EntityGrenadeNuclear ||

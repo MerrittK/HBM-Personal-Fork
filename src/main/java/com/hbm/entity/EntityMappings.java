@@ -194,6 +194,7 @@ public class EntityMappings {
 		addEntity(EntityMissileShuttle.class, "entity_missile_shuttle", 1000);
 		addEntity(EntityZirnoxDebris.class, "entity_zirnox_debris", 1000);
 		addEntity(EntityGhost.class, "entity_ntm_ghost", 1000);
+		//addEntity(EntityDoner.class, "entity_ntm_doner", 1000);
 		addEntity(EntityGrenadeDynamite.class, "entity_grenade_dynamite", 250);
 		addEntity(EntitySiegeLaser.class, "entity_ntm_siege_laser", 1000);
 		addEntity(EntitySiegeDropship.class, "entity_ntm_siege_dropship", 1000);
@@ -262,6 +263,8 @@ public class EntityMappings {
 		addMob(EntityGlyphidNuclear.class, "entity_glyphid_nuclear", 0x267F00, 0xA0A0A0);
 		addMob(EntityGlyphidDigger.class, "entity_glyphid_digger", 0x273038, 0x724A21);
 		addMob(EntityPlasticBag.class, "entity_plastic_bag", 0xd0d0d0, 0x808080);
+		addMob(EntityDoner.class, "entity_ntm_doner", 0x890900, 0xB20B00);
+		//addEntity(EntityDoner.class, "entity_ntm_doner", 1000);
 		addMob(EntityParasiteMaggot.class, "entity_parasite_maggot", 0xd0d0d0, 0x808080);
 
 		addSpawn(EntityCreeperPhosgene.class, 5, 1, 1, EnumCreatureType.monster, BiomeGenBase.getBiomeGenArray());
@@ -278,6 +281,10 @@ public class EntityMappings {
 		for(Quartet<Class<? extends Entity>, String, Integer, Integer> entry : mobMappings) {
 			EntityRegistry.registerGlobalEntityID(entry.getW(), entry.getX(), EntityRegistry.findGlobalUniqueEntityId(), entry.getY(), entry.getZ());
 		}
+		EntityRegistry.addSpawn(EntityDuck.class, 10, 4, 4, EnumCreatureType.creature, BiomeGenBase.swampland);
+		EntityRegistry.addSpawn(EntityDuck.class, 10, 4, 4, EnumCreatureType.creature, BiomeGenBase.river);
+		EntityRegistry.addSpawn(EntityDuck.class, 10, 4, 4, EnumCreatureType.creature, BiomeGenBase.forest);
+		
 	}
 	
 	private static void addEntity(Class<? extends Entity> clazz, String name, int trackingRange) {

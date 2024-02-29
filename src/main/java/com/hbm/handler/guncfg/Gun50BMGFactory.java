@@ -1,8 +1,13 @@
 package com.hbm.handler.guncfg;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import com.hbm.entity.effect.EntityCloudFleija;
+import com.hbm.entity.logic.EntityNukeExplosionMK3;
 import com.hbm.entity.projectile.EntityBulletBaseNT;
+import com.hbm.entity.projectile.EntityBulletBaseNT.IBulletImpactBehaviorNT;
+import com.hbm.entity.projectile.EntityBulletBaseNT.IBulletUpdateBehaviorNT;
 import com.hbm.handler.BulletConfigSyncingUtil;
 import com.hbm.handler.BulletConfiguration;
 import com.hbm.handler.CasingEjector;
@@ -29,9 +34,15 @@ import com.hbm.util.ContaminationUtil.HazardType;
 
 import cpw.mods.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.World;
+import scala.collection.parallel.ParIterableLike.Count;
 
 public class Gun50BMGFactory {
 	
@@ -40,11 +51,14 @@ public class Gun50BMGFactory {
 	private static final SpentCasing CASING50BMG;
 	private static final SpentCasing CASINGLUNA;
 
+
+
 	static {
 		EJECTOR_BMG = new CasingEjector().setMotion(-0.35, 0.9, 0).setOffset(-0.45, -0.2, 0.35).setAngleRange(0.01F, 0.05F);
 		EJECTOR_SNIPER = new CasingEjector().setMotion(-2, 0.15, 0).setOffset(-0.45, -0.2, 0.35).setAngleRange(0.02F, 0.05F);
 		CASING50BMG = new SpentCasing(CasingType.BOTTLENECK).setScale(3F).setBounceMotion(0.01F, 0.05F).setColor(SpentCasing.COLOR_CASE_BRASS).setupSmoke(0.125F, 0.5D, 60, 20);
 		CASINGLUNA = new SpentCasing(CasingType.BOTTLENECK).setScale(4F).setBounceMotion(0.02F, 0.05F).setColor(SpentCasing.COLOR_CASE_BRASS).setupSmoke(0.125F, 0.5D, 60, 30);
+
 	}
 	
 	public static BulletConfiguration getLunaticSabotRound() {
@@ -64,9 +78,38 @@ public class Gun50BMGFactory {
 		bullet.bntImpact = (projectile, x, y, z, sideHit) -> projectile.worldObj.newExplosion(projectile, x, y, z, 2.0F, false, false);
 		
 		bullet.spentCasing = CASINGLUNA.clone().register("LunaStock");
+		bullet.bntUpdate = new IBulletUpdateBehaviorNT() {
 
+			@Override
+			public void behaveUpdate(EntityBulletBaseNT bullet) {
+				
+				if(!bullet.worldObj.isRemote) {
+					Vec3 vec = Vec3.createVectorHelper(bullet.motionX, bullet.motionY, bullet.motionZ);
+					double x = bullet.posX - vec.xCoord;
+					double y = bullet.posY - vec.yCoord;
+					double z = bullet.posZ - vec.zCoord;
+					//AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(x, y, z, x, y, z).expand(radius, radius, radius);
+					//List<Entity> list = bullet.worldObj.getEntitiesWithinAABBExcludingEntity(bullet.shooter, aabb);
+	
+					if(!(bullet.ticksExisted > 1)) {
+						NBTTagCompound data = new NBTTagCompound();
+						int count = 12;
+						data.setString("type", "smoke");
+						data.setString("mode", "cloud");
+						data.setInteger("count", count);
+						PacketDispatcher.wrapper.sendToAllAround(new AuxParticlePacketNT(data, bullet.posX, bullet.posY, bullet.posZ),  new TargetPoint(bullet.dimension, bullet.posX, bullet.posY, bullet.posZ, 200));
+						
+						//PacketDispatcher.wrapper.sendToAllAround(new AuxParticlePacketNT(data, x, y, z), new TargetPoint(bullet.dimension, x, y, z, 100));
+						System.out.println(x + " " + y + " " + z);
+					}
+				}
+			}	
+		};	
+		
 		return bullet;
 	}
+
+
 
 	public static BulletConfiguration getLunaticIncendiaryRound() {
 		BulletConfiguration bullet = getLunaticSabotRound().clone();
@@ -94,6 +137,34 @@ public class Gun50BMGFactory {
 		
 		bullet.spentCasing = CASINGLUNA.clone().register("LunaExp");
 
+		return bullet;
+	}
+	public static BulletConfiguration getLunaticDangerRound() {
+		BulletConfiguration bullet = getLunaticSabotRound().clone();
+
+		bullet.ammo = new ComparableStack(ModItems.ammo_luna_sniper.stackFromEnum(AmmoLunaticSniper.DANGER));
+
+		bullet.ammo.meta = 3;
+		bullet.explosive = 25;
+		bullet.destroysBlocks = true;
+		//bullet.bImpact = (projectile, x, y, z) -> projectile.worldObj.newExplosion(projectile, x, y, z, 25.0F, true, false);
+		bullet.wear = 10000;
+		bullet.spentCasing = CASINGLUNA.clone().register("LunaExp");
+		bullet.bntImpact = new IBulletImpactBehaviorNT() {
+
+			@Override
+			public void behaveBlockHit(EntityBulletBaseNT bullet, int x, int y, int z, int sidehit) {
+				EntityNukeExplosionMK3 ex = EntityNukeExplosionMK3.statFacFleija(bullet.worldObj, x + 0.5, y + 0.5, z + 0.5, (int) 12);
+				if(!ex.isDead) {
+					bullet.worldObj.spawnEntityInWorld(ex);
+		
+					EntityCloudFleija cloud = new EntityCloudFleija(bullet.worldObj, (int) 12);
+					cloud.setPosition(x + 0.5, y + 0.5, z + 0.5);
+					bullet.worldObj.spawnEntityInWorld(cloud);
+			}
+		};
+	};
+		
 		return bullet;
 	}
 
@@ -213,8 +284,8 @@ public class Gun50BMGFactory {
 		config.firingMode = GunConfiguration.FIRE_MANUAL;
 		config.roundsPerCycle = 1;
 		config.firingSound = "hbm:weapon.hicalShot";
-		config.firingPitch = 0.75F;
-		config.ammoCap = 4;
+		config.firingPitch = 1F;
+		config.ammoCap = 5;
 		config.reloadType = GunConfiguration.RELOAD_SINGLE;
 		config.hasSights = true;
 		config.zoomFOV = 0.2F; //x5 magnification
@@ -233,6 +304,7 @@ public class Gun50BMGFactory {
 		config.config.add(BulletConfigSyncingUtil.ROUND_LUNA_SNIPER_SABOT);
 		config.config.add(BulletConfigSyncingUtil.ROUND_LUNA_SNIPER_INCENDIARY);
 		config.config.add(BulletConfigSyncingUtil.ROUND_LUNA_SNIPER_EXPLOSIVE);
+		config.config.add(BulletConfigSyncingUtil.ROUND_LUNA_SNIPER_DANGER);
 
 		config.animations.put(AnimType.CYCLE,
 				new BusAnimation()
@@ -255,7 +327,6 @@ public class Gun50BMGFactory {
 		bullet.spread *= inaccuracy;
 		bullet.dmgMin = 30;
 		bullet.dmgMax = 36;
-		
 		bullet.spentCasing = CASING50BMG.clone().register("50BMGStock");
 		
 		return bullet;

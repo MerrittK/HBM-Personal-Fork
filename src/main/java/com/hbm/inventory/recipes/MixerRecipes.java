@@ -12,7 +12,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
+import com.hbm.blocks.ModBlocks;
 import com.hbm.inventory.FluidStack;
+import com.hbm.inventory.OreDictManager;
 import com.hbm.inventory.RecipesCommon.AStack;
 import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.inventory.RecipesCommon.OreDictStack;
@@ -52,7 +54,7 @@ public class MixerRecipes extends SerializableRecipe {
 
 		register(Fluids.SOLVENT, new MixerRecipe(1000, 50).setStack1(new FluidStack(Fluids.NAPHTHA, 500)).setStack2(new FluidStack(Fluids.AROMATICS, 500)));
 		register(Fluids.SULFURIC_ACID, new MixerRecipe(500, 50).setStack1(new FluidStack(Fluids.ACID, 800)).setSolid(new OreDictStack(S.dust())));
-		register(Fluids.NITRIC_ACID, new MixerRecipe(500, 50).setStack1(new FluidStack(Fluids.SULFURIC_ACID, 500)).setSolid(new OreDictStack(KNO.dust())));
+		register(Fluids.NITRIC_ACID, new MixerRecipe(500, 50).setStack1(new FluidStack(Fluids.AMMONIA, 1000)).setStack2(new FluidStack(Fluids.WATER, 500)));
 		register(Fluids.RADIOSOLVENT, new MixerRecipe(1000, 50).setStack1(new FluidStack(Fluids.REFORMGAS, 750)).setStack2(new FluidStack(Fluids.CHLORINE, 250)));
 		register(Fluids.SCHRABIDIC, new MixerRecipe(16_000, 100).setStack1(new FluidStack(Fluids.SAS3, 8_000)).setStack2(new FluidStack(Fluids.ACID, 6_000)).setSolid(new ComparableStack(ModItems.pellet_charged)));
 		
@@ -82,7 +84,21 @@ public class MixerRecipes extends SerializableRecipe {
 		register(Fluids.DIESEL_REFORM, new MixerRecipe(1_000, 50).setStack1(new FluidStack(Fluids.DIESEL, 900)).setStack2(new FluidStack(Fluids.REFORMATE, 100)));
 		register(Fluids.DIESEL_CRACK_REFORM, new MixerRecipe(1_000, 50).setStack1(new FluidStack(Fluids.DIESEL_CRACK, 900)).setStack2(new FluidStack(Fluids.REFORMATE, 100)));
 		register(Fluids.KEROSENE_REFORM, new MixerRecipe(1_000, 50).setStack1(new FluidStack(Fluids.KEROSENE, 900)).setStack2(new FluidStack(Fluids.REFORMATE, 100)));
-		
+
+		register(Fluids.SMILK, new MixerRecipe(500, 50).setStack1(new FluidStack(Fluids.MILK, 500)).setSolid(new ComparableStack(ModItems.strawberry, 4)));
+		register(Fluids.COFFEE, new MixerRecipe(100, 50).setStack1(new FluidStack(Fluids.WATER, 500)).setSolid(new ComparableStack(ModItems.powder_coffee, 4)));
+		register(Fluids.TEA, new MixerRecipe(200, 50).setStack1(new FluidStack(Fluids.WATER, 500)).setSolid(new ComparableStack(ModItems.tea_leaf, 2)));
+
+		register(Fluids.ELBOWGREASE, new MixerRecipe(1000, 50).setStack1(new FluidStack(Fluids.REFORMGAS, 500)).setStack2(new FluidStack(Fluids.SYNGAS, 500)));
+
+		register(Fluids.HTcO4, new MixerRecipe(250, 50).setStack1(new FluidStack(Fluids.NITRIC_ACID, 500)).setSolid(new ComparableStack(ModItems.nugget_technetium)));
+
+		register(Fluids.MINSOL, new MixerRecipe(250, 50).setStack1(new FluidStack(Fluids.NITRIC_ACID, 500)).setSolid(new ComparableStack(ModBlocks.ore_mineral)));
+
+		register(Fluids.AMMONIA, new MixerRecipe(800, 50).setStack1(new FluidStack(Fluids.NITROGEN, 600)).setStack2(new FluidStack(Fluids.WATER, 1000)));
+		register(Fluids.HYDRAZINE, new MixerRecipe(800, 50).setStack1(new FluidStack(Fluids.NITRIC_ACID, 2000)).setStack2(new FluidStack(Fluids.AMMONIA, 1000)));
+		register(Fluids.BLOODGAS, new MixerRecipe(550, 50).setStack1(new FluidStack(Fluids.AMMONIA, 350)).setStack2(new FluidStack(Fluids.BLOOD, 800)));
+
 		register(Fluids.CHLOROCALCITE_SOLUTION, new MixerRecipe(500, 50).setStack1(new FluidStack(Fluids.WATER, 250)).setStack2(new FluidStack(Fluids.NITRIC_ACID, 250)).setSolid(new OreDictStack(CHLOROCALCITE.dust())));
 		register(Fluids.CHLOROCALCITE_MIX, new MixerRecipe(1000, 50).setStack1(new FluidStack(Fluids.CHLOROCALCITE_SOLUTION, 500)).setStack2(new FluidStack(Fluids.SULFURIC_ACID, 500)).setSolid(new ComparableStack(ModItems.powder_flux)));
 		register(Fluids.PHEROMONE_M, new MixerRecipe(2000, 10).setStack1(new FluidStack(Fluids.PHEROMONE, 1500)).setStack2(new FluidStack(Fluids.BLOOD, 500)).setSolid(new ComparableStack(ModItems.pill_herbal)));

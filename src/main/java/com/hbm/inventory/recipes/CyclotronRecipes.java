@@ -11,6 +11,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
 import static com.hbm.inventory.OreDictManager.*;
+
+import com.hbm.blocks.ModBlocks;
 import com.hbm.inventory.RecipesCommon.AStack;
 import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.inventory.RecipesCommon.OreDictStack;
@@ -102,6 +104,8 @@ public class CyclotronRecipes extends SerializableRecipe {
 		/// PLUTONIUM END ///
 		
 		///TODO: fictional elements
+		makeRecipe(new ComparableStack(ModBlocks.block_euphemium), new ComparableStack(ModBlocks.bf_log), new ItemStack(ModBlocks.eu_log), 0);
+		
 	}
 	
 	private static void makeRecipe(ComparableStack part, AStack in, ItemStack out, int amat) {

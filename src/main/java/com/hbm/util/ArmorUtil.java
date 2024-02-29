@@ -130,7 +130,7 @@ public class ArmorUtil {
 			return true;
 		}
 		
-		if(player.isPotionActive(HbmPotion.mutation))
+		if(player.isPotionActive(HbmPotion.mutation) | player.isPotionActive(HbmPotion.nitan))
 			return true;
 		
 		return false;

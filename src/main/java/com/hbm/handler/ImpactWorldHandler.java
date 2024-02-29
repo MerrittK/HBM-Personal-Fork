@@ -12,6 +12,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockVine;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.EnumSkyBlock;
@@ -32,6 +34,7 @@ public class ImpactWorldHandler {
 		}
 
 		WorldServer serv = (WorldServer) world;
+		TomSaveData data = TomSaveData.forWorld(world);
 
 		List<Chunk> list = serv.theChunkProviderServer.loadedChunks;
 		int listSize = list.size();
@@ -49,7 +52,6 @@ public class ImpactWorldHandler {
 						int Z = coord.getCenterZPosition() - 8 + z;
 						int Y = world.getHeightValue(X, Z) - world.rand.nextInt(Math.max(1, world.getHeightValue(X, Z)));
 
-						TomSaveData data = TomSaveData.forWorld(world);
 						
 						if(data.dust > 0) {
 							die(world, X, Y, Z);
@@ -104,7 +106,12 @@ public class ImpactWorldHandler {
 	public static World lastSyncWorld = null;
 	public static float fire = 0F;
 	public static float dust = 0F;
+	public static long time = 0;
 	public static boolean impact = false;
+	
+	public static float flash = 0F;
+	//public static float size = 0F;
+	public static boolean divinity = false;
 
 	@SideOnly(Side.CLIENT)
 	public static float getFireForClient(World world) {
@@ -122,5 +129,24 @@ public class ImpactWorldHandler {
 	public static boolean getImpactForClient(World world) {
 		if(world != lastSyncWorld) return false;
 		return impact;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public static long getTimeForClient(World world) {
+		if(world != lastSyncWorld) return 0;
+		return time;
+	}
+
+
+	@SideOnly(Side.CLIENT)
+	public static float getFlashForClient(World world) {
+		if(world != lastSyncWorld) return 0F;
+		return flash;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public static boolean getDivinityForClient(World world) {
+		if(world != lastSyncWorld) return false;
+		return divinity;
 	}
 }

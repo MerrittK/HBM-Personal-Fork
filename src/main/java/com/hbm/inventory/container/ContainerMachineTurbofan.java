@@ -36,7 +36,6 @@ public class ContainerMachineTurbofan extends Container {
 			this.addSlotToContainer(new Slot(invPlayer, i, 8 + i * 18, 179));
 		}
 	}
-	
 	@Override
 	public void addCraftingToCrafters(ICrafting crafting) {
 		super.addCraftingToCrafters(crafting);
@@ -67,7 +66,6 @@ public class ContainerMachineTurbofan extends Container {
 				var4.onSlotChanged();
 			}
 		}
-
 		return var3;
 	}
 

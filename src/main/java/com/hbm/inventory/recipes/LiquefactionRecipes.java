@@ -41,7 +41,6 @@ public class LiquefactionRecipes extends SerializableRecipe {
 		recipes.put(KEY_CRACK_TAR,									new FluidStack(100, Fluids.BITUMEN));
 		recipes.put(KEY_COAL_TAR,									new FluidStack(50, Fluids.BITUMEN));
 		recipes.put(KEY_LOG,										new FluidStack(100, Fluids.MUG));
-		recipes.put(KNO.dust(),										new FluidStack(250, Fluids.NITRIC_ACID));
 		recipes.put(NA.dust(),										new FluidStack(100, Fluids.SODIUM));
 		//general utility recipes because why not
 		recipes.put(new ComparableStack(Blocks.netherrack),			new FluidStack(250, Fluids.LAVA));
@@ -67,7 +66,8 @@ public class LiquefactionRecipes extends SerializableRecipe {
 		recipes.put(new ComparableStack(Blocks.tallgrass, 1, 1),	new FluidStack(100, Fluids.SEEDSLURRY));
 		recipes.put(new ComparableStack(Blocks.tallgrass, 1, 2),	new FluidStack(100, Fluids.SEEDSLURRY));
 		recipes.put(new ComparableStack(Blocks.vine),				new FluidStack(100, Fluids.SEEDSLURRY));
-		
+		recipes.put(new ComparableStack(ModItems.flesh),			new FluidStack(100, Fluids.BLOOD));
+		recipes.put(new ComparableStack(ModItems.ingot_osmiridium),	new FluidStack(24000, Fluids.ETHANOL));
 		//recipes.put(new ComparableStack(ModItems.solid_fuel_bf),	new FluidStack(250, Fluids.BALEFIRE));
 		
 		//TODO: more recipes as the crack oil derivatives are added
