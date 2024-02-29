@@ -9,7 +9,6 @@ import com.hbm.render.block.RenderBlockMultipass;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Items;
@@ -18,8 +17,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 
-public class BlockSellafieldOre extends Block implements IBlockMultiPass {
-	public IIcon[] icons;
+public class BlockSellafieldOre extends BlockSellafieldSlaked implements IBlockMultiPass {
 
 	public BlockSellafieldOre(Material mat) {
 		super(mat);
