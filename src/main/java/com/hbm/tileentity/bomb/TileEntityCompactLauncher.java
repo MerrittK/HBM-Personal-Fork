@@ -342,7 +342,7 @@ public class TileEntityCompactLauncher extends TileEntityLoadedBase implements I
 			case HYDROGEN:
 				tanks[0].setFill(tanks[0].getFill() - fuel);
 				tanks[1].setFill(tanks[1].getFill() - fuel);
-				break;
+				break; 
 			case XENON:
 				tanks[0].setFill(tanks[0].getFill() - fuel);
 				break;

@@ -1,56 +1,29 @@
 package com.hbm.items.tool;
 
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
-import com.hbm.blocks.ModBlocks;
-import com.hbm.config.WorldConfig;
 import com.hbm.entity.effect.EntityNukeTorex;
-import com.hbm.entity.mob.EntityDoner;
-import com.hbm.entity.mob.EntityGhost;
-import com.hbm.handler.ImpactWorldHandler;
 import com.hbm.lib.Library;
-<<<<<<< HEAD
 import com.hbm.world.dungeon.Silo;
-=======
-import com.hbm.main.ModEventHandlerClient;
-import com.hbm.saveddata.TomSaveData;
-import com.hbm.util.TrackerUtil;
-import com.hbm.world.feature.OilBubble;
-import com.hbm.world.generator.DungeonToolbox;
-import com.hbm.lib.Library;
-import com.hbm.saveddata.TomSaveData;
->>>>>>> 1a0238b393e104da96248b8ddef10c0bcd9d7587
 
-import cpw.mods.fml.common.eventhandler.Event.Result;
-import net.minecraft.block.Block;
-import net.minecraft.entity.EntityLiving;
-import com.hbm.entity.mob.EntityDoner;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.Chunk;
-import net.minecraftforge.event.ForgeEventFactory;
 
 public class ItemWandD extends Item {
+
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+		
 		if(world.isRemote)
 			return stack;
 		
 		MovingObjectPosition pos = Library.rayTrace(player, 500, 1, false, true, false);
 		
 		if(pos != null) {
-	
-			
-			
 			
 			/*ExplosionVNT vnt = new ExplosionVNT(world, pos.hitVec.xCoord, pos.hitVec.yCoord, pos.hitVec.zCoord, 7);
 			vnt.setBlockAllocator(new BlockAllocatorBulkie(60));
@@ -76,18 +49,21 @@ public class ItemWandD extends Item {
 			world.getBlock(pos.blockX, pos.blockY, pos.blockZ);
 			TimeAnalyzer.endCount();
 			TimeAnalyzer.dump();*/
-			//trySpawn(world,  (float)player.posX, (float)player.posY, (float)player.posZ, new EntityDoner(world));
-			TomSaveData data = TomSaveData.forWorld(world);
-			data.stime = 1;
-			data.markDirty();
-			if(data.divinity == true) {
-				data.divinity = false;
-				data.stime = 1;
-				data.flash = 0;
-				data.markDirty();
+			
+			/*TomSaveData data = TomSaveData.forWorld(world);
+			data.impact = true;
+			data.fire = 0F;
+			data.dust = 0F;
+			data.markDirty();*/
+			
+			/*for(int i = -5; i <= 5; i++) {
+				for(int j = -5; j <= 5; j++) {
+					WorldUtil.setBiome(world, pos.blockX + i, pos.blockZ + j, BiomeGenCraterBase.craterBiome);
+				}
 			}
-			//ModEventHandlerClient.flashTimestamp = System.currentTimeMillis() - 1000;
-			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentText(EnumChatFormatting.RED + "Stellar Event Imminent!"));
+
+			WorldUtil.syncBiomeChange(world, pos.blockX, pos.blockZ);*/
+			
 			/*EntityTomBlast tom = new EntityTomBlast(world);
 			tom.posX = pos.blockX;
 			tom.posY = pos.blockY;
@@ -95,7 +71,6 @@ public class ItemWandD extends Item {
 			tom.destructionRange = 600;
 			world.spawnEntityInWorld(tom);*/
 			
-
 			/*List<EntityNukeTorex> del = world.getEntitiesWithinAABB(EntityNukeTorex.class, AxisAlignedBB.getBoundingBox(pos.blockX, pos.blockY + 1, pos.blockZ, pos.blockX, pos.blockY + 1, pos.blockZ).expand(50, 50, 50));
 			
 			if(!del.isEmpty()) {
@@ -105,7 +80,6 @@ public class ItemWandD extends Item {
 			}*/
 			
 			new Silo().generate(world, world.rand, pos.blockX, pos.blockY + 1, pos.blockZ);
-
 			
 			/*EntityTracker entitytracker = ((WorldServer) world).getEntityTracker();
 			IntHashMap map = ReflectionHelper.getPrivateValue(EntityTracker.class, entitytracker, "trackedEntityIDs", "field_72794_c");
@@ -185,39 +159,11 @@ public class ItemWandD extends Item {
 					}
 				}
 			}*/
-		
 		}
+		
 		return stack;
 	}
 
-	public void generateVein(World world, int startX, int startY, int startZ, Block oreBlock, int veinSize) {
-	    Random rand = new Random();
-	    
-	    LinkedList<int[]> blocksToCheck = new LinkedList<>();
-	    blocksToCheck.add(new int[]{ startX, startY, startZ });
-	    
-	    int blocksChanged = 0;
-
-	    while (!blocksToCheck.isEmpty() && blocksChanged < veinSize) {
-	        int[] coords = blocksToCheck.poll();
-	        int x = coords[0], y = coords[1], z = coords[2];
-
-	        if (world.getBlock(x, y, z) == Blocks.stone) {
-	            world.setBlock(x, y, z, oreBlock);
-	            blocksChanged++;
-
-	            for (int dx = -1; dx <= 1; dx++) {
-	                for (int dy = -1; dy <= 1; dy++) {
-	                    for (int dz = -1; dz <= 1; dz++) {
-	                        if (rand.nextInt(100) < 20) {  // Reduced to 20% chance to continue the vein
-	                            blocksToCheck.add(new int[]{ x + dx, y + dy, z + dz });
-	                        }
-	                    }
-	                }
-	            }
-	        }
-	    }
-	}
 	@Override
 	public void addInformation(ItemStack itemstack, EntityPlayer player, List list, boolean bool)
 	{

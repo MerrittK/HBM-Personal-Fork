@@ -1,33 +1,16 @@
 package com.hbm.blocks.bomb;
 
-<<<<<<< HEAD
+
 import com.hbm.blocks.BlockDummyable;
-=======
-import java.util.Random;
-
-import org.apache.logging.log4j.Level;
-
-import com.hbm.blocks.ModBlocks;
-import com.hbm.config.GeneralConfig;
->>>>>>> 1a0238b393e104da96248b8ddef10c0bcd9d7587
 import com.hbm.interfaces.IBomb;
 import com.hbm.tileentity.TileEntityProxyCombo;
 import com.hbm.tileentity.bomb.TileEntityLaunchPad;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-<<<<<<< HEAD
-=======
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
->>>>>>> 1a0238b393e104da96248b8ddef10c0bcd9d7587
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
-<<<<<<< HEAD
 import net.minecraft.util.AxisAlignedBB;
-=======
-import net.minecraft.util.MathHelper;
->>>>>>> 1a0238b393e104da96248b8ddef10c0bcd9d7587
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 

@@ -63,7 +63,7 @@ public class ItemMissile extends ItemCustomLore {
 		TIER2("Tier 2"),
 		TIER3("Tier 3"),
 		TIER4("Tier 4");
-		
+	
 		public String display;
 		
 		private MissileTier(String display) {

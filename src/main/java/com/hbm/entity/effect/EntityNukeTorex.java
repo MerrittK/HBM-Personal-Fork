@@ -461,7 +461,6 @@ public class EntityNukeTorex extends Entity {
 						Math.max(col * 2, 0.25),
 						Math.max(col * 0.5, 0.25)
 						);
-<<<<<<< HEAD
 			} else if(type == 2) {
 				Color color = Color.getHSBColor(this.angle / 2F / (float) Math.PI, 1F, 1F);
 				if(this.type == TorexType.RING) {
