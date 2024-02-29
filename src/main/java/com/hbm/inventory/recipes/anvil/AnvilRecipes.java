@@ -862,16 +862,6 @@ public class AnvilRecipes {
 						new AnvilOutput(new ItemStack(ModItems.ingot_desh, 1), 0.5F)
 				}
 		).setTier(6));
-
-		constructionRecipes.add(new AnvilConstructionRecipe(
-				new ComparableStack(ModItems.circuit_tantalium_raw),
-				new AnvilOutput[] {
-						new AnvilOutput(new ItemStack(Items.redstone, 4)),
-						new AnvilOutput(new ItemStack(ModItems.wire_gold, 2)),
-						new AnvilOutput(new ItemStack(ModItems.plate_copper, 2)),
-						new AnvilOutput(new ItemStack(ModItems.billet_gaas, 1))
-				}
-		).setTier(4));
 		constructionRecipes.add(new AnvilConstructionRecipe(
 				new ComparableStack(ModItems.circuit_tantalium),
 				new AnvilOutput[] {
