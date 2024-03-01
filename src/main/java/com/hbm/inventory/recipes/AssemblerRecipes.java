@@ -844,7 +844,8 @@ public class AssemblerRecipes extends SerializableRecipe {
 				new OreDictStack(B.ingot(), 4),
 				new OreDictStack(RUBBER.ingot(), 16),
 				new OreDictStack(KEY_ANYPANE, 64),
-				new ComparableStack(ModItems.motor, 18),
+				new ComparableStack(ModItems.motor, 8),
+				new ComparableStack(ModItems.part_generic, 8, EnumPartType.PISTON_HYDRAULIC.ordinal()),
 				new OreDictStack(W.bolt(), 16),
 				new ComparableStack(ModItems.pipes_steel, 1),
 				new ComparableStack(ModItems.circuit_gold, 3)
@@ -935,7 +936,7 @@ public class AssemblerRecipes extends SerializableRecipe {
 				new OreDictStack(STEEL.plateCast(), 8),
 				new OreDictStack(CU.plate528(), 4),
 				new ComparableStack(ModItems.hull_big_steel, 2),
-				new ComparableStack(ModItems.motor, 3),
+				new ComparableStack(ModItems.part_generic, 4, EnumPartType.PISTON_HYDRAULIC.ordinal()),
 				new ComparableStack(ModItems.circuit_red_copper, 1)
 			}, 200);
 
@@ -1099,6 +1100,7 @@ public class AssemblerRecipes extends SerializableRecipe {
 						new ComparableStack(ModBlocks.concrete_smooth, 64),
 						new ComparableStack(ModItems.drill_titanium),
 						new ComparableStack(ModItems.motor_desh, 2),
+						new ComparableStack(ModItems.part_generic, 12, EnumPartType.PISTON_HYDRAULIC.ordinal()),
 						!exp ? new ComparableStack(ModItems.plate_desh, 6) : new OreDictStack(DESH.heavyComp()),
 						new OreDictStack(NB.ingot(), 8),
 						new ComparableStack(ModItems.tank_steel, 24),
