@@ -73,7 +73,7 @@ public class HbmChestContents {
 			new WeightedRandomChestContent(ModItems.circuit_raw, 0, 1, 3, 5),
 			new WeightedRandomChestContent(ModItems.circuit_aluminium, 0, 1, 2, 4),
 			new WeightedRandomChestContent(ModItems.circuit_copper, 0, 1, 1, 3),
-			new WeightedRandomChestContent(ModItems.circuit_red_copper, 0, 1, 1, 2),
+			//new WeightedRandomChestContent(ModItems.circuit_red_copper, 0, 1, 1, 2),
 			new WeightedRandomChestContent(ModItems.blade_titanium, 0, 1, 8, 1)
 	};
 
@@ -279,7 +279,7 @@ public class HbmChestContents {
 			new WeightedRandomChestContent(ModItems.ingot_advanced_alloy, 0, 4, 12, 1),
 			new WeightedRandomChestContent(ModItems.ammo_50bmg, 0, 24, 48, 1),
 			new WeightedRandomChestContent(ModItems.ammo_45, 0, 48, 64, 2),
-			new WeightedRandomChestContent(ModItems.circuit_red_copper, 0, 6, 12, 1),
+			new WeightedRandomChestContent(ModItems.circuit_copper, 0, 6, 12, 1),
 			new WeightedRandomChestContent(ModItems.gas_mask_m65, 0, 1, 1, 1),
 			new WeightedRandomChestContent(ModItems.grenade_if_he, 0, 1, 1, 1),
 			new WeightedRandomChestContent(ModItems.grenade_if_incendiary, 0, 1, 1, 1),
@@ -298,7 +298,7 @@ public class HbmChestContents {
 			new WeightedRandomChestContent(ModItems.gun_uzi, 0, 1, 1, 1),
 			new WeightedRandomChestContent(ModItems.gun_uzi_silencer, 0, 1, 1, 1),
 			new WeightedRandomChestContent(ModItems.clip_uzi, 0, 1, 3, 1),
-			new WeightedRandomChestContent(ModItems.circuit_red_copper, 0, 12, 16, 1),
+			new WeightedRandomChestContent(ModItems.circuit_copper, 0, 12, 16, 1),
 			new WeightedRandomChestContent(ModItems.circuit_gold, 0, 2, 6, 1) };
 
 	public static WeightedRandomChestContent[] vault3 = new WeightedRandomChestContent[] {
@@ -317,7 +317,7 @@ public class HbmChestContents {
 			new WeightedRandomChestContent(ModItems.gun_fatman, 0, 1, 1, 1),
 			new WeightedRandomChestContent(ModItems.gun_revolver_pip, 0, 1, 1, 1),
 			new WeightedRandomChestContent(ModItems.clip_revolver_pip, 0, 2, 4, 1),
-			new WeightedRandomChestContent(ModItems.circuit_red_copper, 0, 18, 32, 1),
+			new WeightedRandomChestContent(ModItems.circuit_copper, 0, 18, 32, 1),
 			new WeightedRandomChestContent(ModItems.circuit_gold, 0, 6, 12, 1) };
 
 	public static WeightedRandomChestContent[] vault4 = new WeightedRandomChestContent[] {

@@ -76,7 +76,7 @@ public class ChemplantRecipes extends SerializableRecipe {
 				.outputFluids(new FluidStack(Fluids.SOLVENT, 1000)));
 		recipes.add(new ChemRecipe(41, "CIRCUIT_4", 200)
 				.inputItems(
-						new ComparableStack(ModItems.circuit_red_copper),
+						new ComparableStack(ModItems.circuit_copper),
 						new ComparableStack(ModItems.wire_gold, 4),
 						new OreDictStack(LAPIS.dust()),
 						new OreDictStack(ANY_PLASTIC.ingot()))

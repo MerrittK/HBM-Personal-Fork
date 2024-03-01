@@ -201,7 +201,7 @@ public class ItemStarterKit extends Item {
 			player.inventory.addItemStackToInventory(new ItemStack(ModItems.motor, 4));
 			player.inventory.addItemStackToInventory(new ItemStack(ModItems.circuit_aluminium, 16));
 			player.inventory.addItemStackToInventory(new ItemStack(ModItems.circuit_copper, 8));
-			player.inventory.addItemStackToInventory(new ItemStack(ModItems.circuit_red_copper, 4));
+			//player.inventory.addItemStackToInventory(new ItemStack(ModItems.circuit_red_copper, 4));
 			player.inventory.addItemStackToInventory(new ItemStack(ModItems.wiring_red_copper, 1));
 			player.inventory.addItemStackToInventory(new ItemStack(ModItems.magnetron, 5));
 			player.inventory.addItemStackToInventory(new ItemStack(ModItems.piston_selenium, 1));

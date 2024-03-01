@@ -46,19 +46,21 @@ public class ArcWelderRecipes extends SerializableRecipe {
 				new ComparableStack(ModItems.wire_gold, 8)));
 
 		//Circuits
+		
 		recipes.add(new ArcWelderRecipe(new ItemStack(ModItems.circuit_copper), 100, 1_000L, new FluidStack(Fluids.GAS, 100),
 				new ComparableStack(ModItems.circuit_aluminium, 1), new OreDictStack(NETHERQUARTZ.dust()), new ComparableStack(ModItems.wire_copper, 8)));
-		recipes.add(new ArcWelderRecipe(new ItemStack(ModItems.circuit_red_copper), 100, 2_500L, new FluidStack(Fluids.PETROLEUM, 100),
-				new ComparableStack(ModItems.circuit_copper, 1), new ComparableStack(ModItems.plate_polymer), new ComparableStack(ModItems.wire_red_copper, 8)));
+		/*recipes.add(new ArcWelderRecipe(new ItemStack(ModItems.circuit_red_copper), 100, 2_500L, new FluidStack(Fluids.PETROLEUM, 100),
+				new ComparableStack(ModItems.circuit_copper, 1), new ComparableStack(ModItems.plate_polymer), new ComparableStack(ModItems.wire_red_copper, 8)));*/
 		recipes.add(new ArcWelderRecipe(new ItemStack(ModItems.circuit_gold), 100, 10_000L, new FluidStack(Fluids.UNSATURATEDS, 250),
-				new ComparableStack(ModItems.circuit_red_copper, 1), new OreDictStack(ANY_PLASTIC.ingot()), new ComparableStack(ModItems.wire_gold, 8)));
+				new ComparableStack(ModItems.circuit_copper, 1), new OreDictStack(ANY_PLASTIC.ingot()), new ComparableStack(ModItems.wire_gold, 8)));
 		recipes.add(new ArcWelderRecipe(new ItemStack(ModItems.circuit_schrabidium), 100, 50_000L, new FluidStack(Fluids.SOURGAS, 250),
 				new ComparableStack(ModItems.circuit_gold, 1), new OreDictStack(DESH.ingot()), new ComparableStack(ModItems.wire_schrabidium, 8)));
 		
 		recipes.add(new ArcWelderRecipe(new ItemStack(ModItems.circuit_copper), 100, 1_000L, new FluidStack(Fluids.GAS, 100),
 				new ComparableStack(ModItems.part_silicon, 2, EnumSiliconType.WAFER_DOPED.ordinal()), new OreDictStack(NETHERQUARTZ.dust()), new ComparableStack(ModItems.wire_copper, 8)));
-		recipes.add(new ArcWelderRecipe(new ItemStack(ModItems.circuit_red_copper), 100, 2_500L, new FluidStack(Fluids.PETROLEUM, 100),
-				new ComparableStack(ModItems.part_silicon, 2, EnumSiliconType.WAFER_DOPED.ordinal()), new ComparableStack(ModItems.plate_polymer), new ComparableStack(ModItems.wire_red_copper, 8)));
+		//Getting ahead of the times
+		/*recipes.add(new ArcWelderRecipe(new ItemStack(ModItems.circuit_red_copper), 100, 2_500L, new FluidStack(Fluids.PETROLEUM, 100),
+				new ComparableStack(ModItems.part_silicon, 2, EnumSiliconType.WAFER_DOPED.ordinal()), new ComparableStack(ModItems.plate_polymer), new ComparableStack(ModItems.wire_red_copper, 8)));*/
 		recipes.add(new ArcWelderRecipe(new ItemStack(ModItems.circuit_gold), 100, 10_000L, new FluidStack(Fluids.UNSATURATEDS, 250),
 				new ComparableStack(ModItems.part_silicon, 2, EnumSiliconType.WAFER_DOPED.ordinal()), new OreDictStack(ANY_PLASTIC.ingot()), new ComparableStack(ModItems.wire_gold, 8)));
 

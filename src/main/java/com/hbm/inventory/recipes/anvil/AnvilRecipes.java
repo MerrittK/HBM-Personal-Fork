@@ -786,7 +786,7 @@ public class AnvilRecipes {
 					new AnvilOutput(new ItemStack(ModItems.crt_display, 1)),
 					new AnvilOutput(new ItemStack(ModItems.scrap, 3)),
 					new AnvilOutput(new ItemStack(ModItems.wire_copper, 4)),
-					new AnvilOutput(new ItemStack(ModItems.circuit_red_copper, 1), 0.25F),
+					new AnvilOutput(new ItemStack(ModItems.circuit_copper, 1), 0.25F),
 					new AnvilOutput(new ItemStack(ModItems.circuit_copper, 2))
 					
 				}
@@ -843,7 +843,7 @@ public class AnvilRecipes {
 		constructionRecipes.add(new AnvilConstructionRecipe(
 				new ComparableStack(ModItems.circuit_gold),
 				new AnvilOutput[] {
-						new AnvilOutput(new ItemStack(ModItems.circuit_red_copper, 1)),
+						new AnvilOutput(new ItemStack(ModItems.circuit_copper, 1)),
 						new AnvilOutput(new ItemStack(ModItems.wire_gold, 2)),
 						new AnvilOutput(new ItemStack(ModItems.wire_gold, 1), 0.5F),
 						new AnvilOutput(new ItemStack(ModItems.wire_gold, 1), 0.25F),
