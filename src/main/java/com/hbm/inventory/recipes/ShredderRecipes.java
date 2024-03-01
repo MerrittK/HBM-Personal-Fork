@@ -17,6 +17,9 @@ import com.hbm.inventory.OreDictManager.DictFrame;
 import com.hbm.inventory.RecipesCommon.ComparableStack;
 import com.hbm.inventory.recipes.loader.SerializableRecipe;
 import com.hbm.items.ItemEnums.EnumChunkType;
+import com.hbm.items.ItemGenericPart.EnumPartType;
+import com.hbm.items.ItemSiliconPart.EnumSiliconType;
+import com.hbm.items.machine.ItemPistons.EnumPistonType;
 import com.hbm.items.ModItems;
 import com.hbm.items.special.ItemBedrockOre.EnumBedrockOre;
 import com.hbm.main.MainRegistry;
@@ -238,12 +241,12 @@ public class ShredderRecipes extends SerializableRecipe {
 		for(ItemStack plank : planks) ShredderRecipes.setRecipe(plank, new ItemStack(ModItems.powder_sawdust, 1));
 		for(ItemStack sapling : saplings) ShredderRecipes.setRecipe(sapling, new ItemStack(Items.stick, 1));
 
-		List<ItemStack> silicon = OreDictionary.getOres("itemSilicon");
-		if(!silicon.isEmpty()) {
-			ShredderRecipes.setRecipe(Blocks.sand, silicon.get(0).copy());
-		} else {
-			ShredderRecipes.setRecipe(Blocks.sand, new ItemStack(ModItems.dust, 2));
-		}
+		//List<ItemStack> silicon = OreDictionary.getOres("itemSilicon");
+		//if(!silicon.isEmpty()) {
+		//	ShredderRecipes.setRecipe(Blocks.sand, silicon.get(0).copy());
+		//} else {
+		//	ShredderRecipes.setRecipe(Blocks.sand, new ItemStack(ModItems.dust, 2));
+		//}
 		
 		for(EnumBedrockOre ore : EnumBedrockOre.values()) {
 			int i = ore.ordinal();
@@ -290,7 +293,7 @@ public class ShredderRecipes extends SerializableRecipe {
 		ShredderRecipes.setRecipe(ModItems.crystal_cobalt, new ItemStack(ModItems.powder_cobalt, 3));
 		
 		/*Silicon*/
-		ShredderRecipes.setRecipe(ModItems.boule_silicon, new ItemStack(ModItems.wafer_silicon, 5));
+		ShredderRecipes.setRecipe(new ItemStack(ModItems.part_silicon, 1, EnumSiliconType.BOULE_SILICON.ordinal()), new ItemStack(ModItems.part_silicon, 3, EnumSiliconType.WAFER_SILICON.ordinal()));
 		
 		/* Misc recycling */
 		ShredderRecipes.setRecipe(ModBlocks.steel_poles, new ItemStack(ModItems.powder_steel_tiny, 3));

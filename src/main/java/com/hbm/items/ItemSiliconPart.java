@@ -9,21 +9,22 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 
-public class ItemGenericPart extends ItemEnumMulti {
+public class ItemSiliconPart extends ItemEnumMulti {
 	
-	public static enum EnumPartType {
-		PISTON_PNEUMATIC("piston_pneumatic"),
-		PISTON_HYDRAULIC("piston_hydraulic"),
-		PISTON_ELECTRIC("piston_electric");
+	public static enum EnumSiliconType {
+		BOULE_SILICON("boule_silicon"),
+		WAFER_SILICON("wafer_silicon"),
+		BOULE_DOPED("boule_doped"),
+		WAFER_DOPED("wafer_doped");;
 		private String texName;
 		
-		private EnumPartType(String texName) {
+		private EnumSiliconType(String texName) {
 			this.texName = texName;
 		}
 	}
 
-	public ItemGenericPart() {
-		super(EnumPartType.class, true, true);
+	public ItemSiliconPart() {
+		super(EnumSiliconType.class, true, true);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -33,7 +34,7 @@ public class ItemGenericPart extends ItemEnumMulti {
 		this.icons = new IIcon[enums.length];
 		
 		for(int i = 0; i < icons.length; i++) {
-			EnumPartType num = (EnumPartType)enums[i];
+			EnumSiliconType num = (EnumSiliconType)enums[i];
 			this.icons[i] = reg.registerIcon(RefStrings.MODID + ":" + num.texName);
 		}
 	}
