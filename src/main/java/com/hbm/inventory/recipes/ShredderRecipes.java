@@ -294,6 +294,7 @@ public class ShredderRecipes extends SerializableRecipe {
 		
 		/*Silicon*/
 		ShredderRecipes.setRecipe(new ItemStack(ModItems.part_silicon, 1, EnumSiliconType.BOULE_SILICON.ordinal()), new ItemStack(ModItems.part_silicon, 3, EnumSiliconType.WAFER_SILICON.ordinal()));
+		ShredderRecipes.setRecipe(new ItemStack(ModItems.part_silicon, 1, EnumSiliconType.BOULE_DOPED.ordinal()), new ItemStack(ModItems.part_silicon, 3, EnumSiliconType.WAFER_DOPED.ordinal()));
 		
 		/* Misc recycling */
 		ShredderRecipes.setRecipe(ModBlocks.steel_poles, new ItemStack(ModItems.powder_steel_tiny, 3));

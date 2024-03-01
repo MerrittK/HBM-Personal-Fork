@@ -22,6 +22,7 @@ import com.hbm.inventory.recipes.loader.SerializableRecipe;
 import com.hbm.items.ItemEnums.EnumAshType;
 import com.hbm.items.ItemEnums.EnumPlantType;
 import com.hbm.items.ItemEnums.EnumTarType;
+import com.hbm.items.ItemSiliconPart.EnumSiliconType;
 import com.hbm.items.ModItems;
 import com.hbm.items.machine.ItemChemicalDye.EnumChemDye;
 import com.hbm.items.machine.ItemFluidIcon;
@@ -185,6 +186,7 @@ public class CrystallizerRecipes extends SerializableRecipe {
 		registerRecipe(KEY_SAND, new CrystallizerRecipe(Blocks.clay, 20), new FluidStack(Fluids.COLLOID, 1_000));
 		registerRecipe(new ComparableStack(ModBlocks.sand_quartz), new CrystallizerRecipe(new ItemStack(ModItems.ball_dynamite, 16), 20), new FluidStack(Fluids.NITROGLYCERIN, 1_000));
 		registerRecipe(NETHERQUARTZ.dust(), new CrystallizerRecipe(new ItemStack(ModItems.ball_dynamite, 4), 20), new FluidStack(Fluids.NITROGLYCERIN, 250));
+		registerRecipe(NETHERQUARTZ.dust(), new CrystallizerRecipe(new ItemStack(ModItems.part_silicon, 1, EnumSiliconType.BOULE_SILICON.ordinal()), utilityTime), new FluidStack(Fluids.RADIOSOLVENT, 250));
 
 		/// COMPAT CERTUS QUARTZ ///
 		List<ItemStack> quartz = OreDictionary.getOres("crystalCertusQuartz");

@@ -8,7 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
-
+//TODO It might be a good idea to make it a fancy modular enum, but I am so tired right now. Any change is going to break things.
 public class ItemSiliconPart extends ItemEnumMulti {
 	
 	public static enum EnumSiliconType {
