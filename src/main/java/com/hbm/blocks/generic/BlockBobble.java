@@ -192,12 +192,13 @@ public class BlockBobble extends BlockContainer implements IGUIProvider {
 		NOS(			"Dr Nostalgia",						"Dr Nostalgia",		"SSG and Vortex models",									"Take a picture, I'ma pose, paparazzi$I've been drinking, moving like a zombie",					true,	ScrapType.BOARD_TRANSISTOR),
 		DRILLGON(		"Drillgon200",						"Drillgon200",		"1.12 Port",												null,																								false,	ScrapType.CPU_LOGIC),
 		CIRNO(			"Cirno",							"Cirno",			"the only multi layered skin i had",						"No brain. Head empty.",																			true,	ScrapType.BOARD_BLANK),
-		MICROWAVE(		"Microwave",						"Microwave",		"OC Compatibility",												"they call me the food heater",																		true,	ScrapType.BRIDGE_BIOS),
-		PEEP(			"Peep",								"LePeeperSauvage",	"Coilgun, Leadburster and Congo Lake models, BDCL QC",		"Fluffy ears can't hide in ash, nor snow.",															true,	ScrapType.CPU_CLOCK),
+		MICROWAVE(		"Microwave",						"Microwave",		"OC Compatibility",											"they call me the food heater",																		true,	ScrapType.BOARD_CONVERTER),
+		PEEP(			"Peep",								"LePeeperSauvage",	"Coilgun, Leadburster and Congo Lake models, BDCL QC",		"Fluffy ears can't hide in ash, nor snow.",															true,	ScrapType.CARD_BOARD),
+		MELLOW(			"MELLOWARPEGGIATION",				"Mellow",			"Industrial lighting, animation tools",						"Make something cool now, ask for permission later.",												true,	ScrapType.CARD_PROCESSOR),
 		GWEN(			"Gwen",								"Gwen",			"Numero Uno Homie",											"HELP ME I'M TRAPPED IN THIS FUCKING POLYRESIN PRISON YOU NEED TO LET ME OUT PLEASE SMASH IT OPEN DO IT NOW CRACK IT",																					true,	ScrapType.BOARD_BLANK),
 		JUICE(			"Juicy_Lad",						"Juicy_Lad",	"The Mojave Testing for this funny fork",					"\"What should the Inscription be?\",$ \"Uhh.. I'll think about it.\"",								true,	ScrapType.BOARD_BLANK),
-		JAMESH_2(		"JamesH_2",							"JamesH_2",		"The fork itself",										"COME ON AND SLAM",																						true,	ScrapType.BOARD_BLANK),
-		MELLOW(			"MELLOWARPEGGIATION",					"Mellow",				"Industrial lighting, animation tools",						"Make something cool now, ask for permission later.",												true,	ScrapType.CPU_LOGIC);
+		JAMESH_2(		"JamesH_2",							"JamesH_2",		"The fork itself",										"COME ON AND SLAM",																						true,	ScrapType.BOARD_BLANK);
+
 
 
 		public String name;			//the title of the tooltip
