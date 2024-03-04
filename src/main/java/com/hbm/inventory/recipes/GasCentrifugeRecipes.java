@@ -95,6 +95,7 @@ public class GasCentrifugeRecipes {
 		fluidConversions.put(Fluids.UF6, PseudoFluidType.NUF6);
 		fluidConversions.put(Fluids.PUF6, PseudoFluidType.PF6);
 		fluidConversions.put(Fluids.WATZ, PseudoFluidType.MUD);
+		fluidConversions.put(Fluids.MINSOL, PseudoFluidType.MINSOLE);
 		
 		gasCent.put(new FluidStack(1200, Fluids.UF6), new Object[] { new ItemStack[] {new ItemStack(ModItems.nugget_u238, 11), new ItemStack(ModItems.nugget_u235, 1), new ItemStack(ModItems.fluorite, 4)}, true, 4 });
 		gasCent.put(new FluidStack(1200, Fluids.UF6), new Object[] { new ItemStack[] {new ItemStack(ModItems.nugget_u238, 6), new ItemStack(ModItems.nugget_uranium_fuel, 6), new ItemStack(ModItems.fluorite, 4)}, false, 2 });
