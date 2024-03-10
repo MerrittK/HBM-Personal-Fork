@@ -65,7 +65,7 @@ public class BobmazonOfferFactory {
 		materials.add(new Offer(new ItemStack(ModItems.rtg_unit), Requirement.NUCLEAR, 25 * inflation));
 		materials.add(new Offer(new ItemStack(ModItems.circuit_aluminium), Requirement.ASSEMBLY, 4 * inflation));
 		materials.add(new Offer(new ItemStack(ModItems.circuit_copper), Requirement.ASSEMBLY, 6 * inflation));
-		//materials.add(new Offer(new ItemStack(ModItems.circuit_red_copper), Requirement.ASSEMBLY, 10 * inflation));
+		materials.add(new Offer(new ItemStack(ModItems.circuit_red_copper), Requirement.ASSEMBLY, 10 * inflation));
 		materials.add(new Offer(new ItemStack(ModItems.circuit_gold), Requirement.CHEMICS, 16 * inflation));
 		materials.add(new Offer(new ItemStack(ModItems.pellet_gas), Requirement.CHEMICS, 4 * inflation));
 		materials.add(new Offer(new ItemStack(ModItems.magnetron), Requirement.ASSEMBLY, 10 * inflation));

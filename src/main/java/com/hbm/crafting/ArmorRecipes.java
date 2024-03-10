@@ -104,7 +104,7 @@ public class ArmorRecipes {
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.dieselsuit_plate, 1), new Object[] { "W W", "CDC", "SWS", 'W', new ItemStack(Blocks.wool, 1, 14), 'S', STEEL.ingot(), 'C', ModItems.circuit_targeting_tier3, 'D', ModBlocks.machine_diesel });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.dieselsuit_legs, 1), new Object[] { "M M", "S S", "W W", 'W', new ItemStack(Blocks.wool, 1, 14), 'S', STEEL.ingot(), 'M', ModItems.motor });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.dieselsuit_boots, 1), new Object[] { "W W", "S S", 'W', new ItemStack(Blocks.wool, 1, 14), 'S', STEEL.ingot() });
-		CraftingManager.addRecipeAuto(new ItemStack(ModItems.envsuit_helmet, 1), new Object[] { "TCT", "TGT", "RRR", 'T', TI.plate(), 'C', ModItems.circuit_copper, 'G', KEY_ANYPANE, 'R', RUBBER.ingot() });
+		CraftingManager.addRecipeAuto(new ItemStack(ModItems.envsuit_helmet, 1), new Object[] { "TCT", "TGT", "RRR", 'T', TI.plate(), 'C', ModItems.circuit_red_copper, 'G', KEY_ANYPANE, 'R', RUBBER.ingot() });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.envsuit_plate, 1), new Object[] { "T T", "TCT", "RRR", 'T', TI.plate(), 'C', TI.plateCast(), 'R', RUBBER.ingot() });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.envsuit_legs, 1), new Object[] { "TCT", "R R", "T T", 'T', TI.plate(), 'C', TI.plateCast(), 'R', RUBBER.ingot() });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.envsuit_boots, 1), new Object[] { "R R", "T T", 'T', TI.plate(), 'R', RUBBER.ingot() });
@@ -172,7 +172,7 @@ public class ArmorRecipes {
 		//Capes
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.cape_radiation, 1), new Object[] { "W W", "WIW", "WDW", 'W', new ItemStack(Blocks.wool, 1, 11), 'D', KEY_YELLOW, 'I', ModItems.nuclear_waste });
 		CraftingManager.addRecipeAuto(new ItemStack(ModItems.cape_gasmask, 1), new Object[] { "W W", "WIW", "WDW", 'W', new ItemStack(Blocks.wool, 1, 4), 'D', KEY_BLACK, 'I', ModItems.gas_mask });
-		CraftingManager.addRecipeAuto(new ItemStack(ModItems.cape_schrabidium, 1), new Object[] { "W W", "WIW", "WDW", 'W', SA326.ingot(), 'D', KEY_BLACK, 'I', ModItems.circuit_copper });
+		CraftingManager.addRecipeAuto(new ItemStack(ModItems.cape_schrabidium, 1), new Object[] { "W W", "WIW", "WDW", 'W', SA326.ingot(), 'D', KEY_BLACK, 'I', ModItems.circuit_red_copper });
 		
 		//Configged
 		if(GeneralConfig.enableLBSM && GeneralConfig.enableLBSMSimpleArmorRecipes) {

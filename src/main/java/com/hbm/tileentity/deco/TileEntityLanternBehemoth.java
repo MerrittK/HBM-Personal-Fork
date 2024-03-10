@@ -51,7 +51,7 @@ public class TileEntityLanternBehemoth extends TileEntity implements INBTPacketR
 				ItemStack payload = ItemKitCustom.create("Supplies", null, 0xffffff, 0x008000,
 						new ItemStack(ModItems.circuit_aluminium, 4 + worldObj.rand.nextInt(4)),
 						new ItemStack(ModItems.circuit_copper, 4 + worldObj.rand.nextInt(2)),
-						new ItemStack(ModItems.circuit_copper, 3 + worldObj.rand.nextInt(3)),
+						new ItemStack(ModItems.circuit_red_copper, 2 + worldObj.rand.nextInt(3)),
 						new ItemStack(ModItems.circuit_gold, 1 + worldObj.rand.nextInt(2)),
 						bonus ? new ItemStack(ModItems.gem_alexandrite) : new ItemStack(Items.diamond, 6 + worldObj.rand.nextInt(6)),
 						new ItemStack(Blocks.red_flower));
