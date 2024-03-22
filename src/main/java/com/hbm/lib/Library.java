@@ -387,7 +387,18 @@ public class Library {
 		
 		return flag;
 	}
-
+	//This is used for a james fork thing I don't understand, and don't want to understand
+	public static boolean checkInventory(EntityPlayer player, Item item, int slot)
+	{
+		if(player.inventory.mainInventory[slot] != null &&
+				player.inventory.mainInventory[slot].getItem() == item) 
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
 	// Added for sake of doors
 	// Original: Drillgon200: https://thebookofshaders.com/glossary/?search=smoothstep
 	public static double smoothstep(double t, double edge0, double edge1){
