@@ -54,13 +54,13 @@ public class WorldConfig {
 	public static int bedrockRedstoneSpawn = 50;
 
 	public static int bedrockRareEarthSpawn = 50;
-<<<<<<< HEAD
+
 
 	public static int bedrockBismuthSpawn = 400;
 	public static int bedrockCadmiumSpawn = 300;
-=======
+
 	public static int bedrockBauxiteSpawn = 100;
->>>>>>> upstream/master
+
 	public static int bedrockGlowstoneSpawn = 100;
 	public static int bedrockPhosphorusSpawn = 50;
 	public static int bedrockQuartzSpawn = 100;
