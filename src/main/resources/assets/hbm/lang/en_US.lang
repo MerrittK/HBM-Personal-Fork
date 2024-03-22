@@ -884,6 +884,8 @@ crucible.steelMeteoric=Steel Production from Meteoric Iron
 crucible.steelPig=Steel Production from Pig Iron
 crucible.steelWrought=Steel Production from Wrought Iron
 crucible.tcalloy=Technetium Steel Production
+crucible.magtun=Magnetized Tungsten Production
+crucible.stainless=Stainless Steel Production
 
 death.attack.acid=%1$s fell into acid.
 death.attack.acidPlayer=%1$s was dissolved by %2$s.
