@@ -74,6 +74,7 @@ public class TileMappings {
 		put(TileEntityBrownBarrel.class, "tileentity_brown_barrel");
 		put(TileEntityYellowBarrel.class, "tileentity_nukebarrel");
 		put(TileEntityLaunchPad.class, "tileentity_launch1");
+		put(TileEntityLaunchPadRusted.class, "tileentity_launchpad_rusted");
 		put(TileEntityLaunchPadLarge.class, "tileentity_launchpad_large");
 		put(TileEntityDecoBlock.class, "tileentity_deco");
 		put(TileEntityDecoBlockAltW.class, "tileentity_deco_w");
@@ -99,6 +100,7 @@ public class TileMappings {
 		put(TileEntityMachineExcavator.class, "tileentity_ntm_excavator");
 		put(TileEntityFluidDuctSimple.class, "tileentity_universal_duct_simple");
 		put(TileEntityFluidDuct.class, "tileentity_universal_duct");
+		put(TileEntityMachineDrain.class, "tileentity_fluid_drain");
 		put(TileEntityMachineFluidTank.class, "tileentity_fluid_tank");
 		put(TileEntityMachineTurbofan.class, "tileentity_machine_turbofan");
 		put(TileEntityMachineTurbineGas.class, "tileentity_machine_gasturbine");
@@ -138,7 +140,6 @@ public class TileMappings {
 		put(TileEntityFF.class, "tileentity_forcefield");
 		put(TileEntityForceField.class, "tileentity_machine_field");
 		put(TileEntityMachineShredderLarge.class, "tileentity_machine_big_shredder");
-		put(TileEntityRFDuct.class, "tileentity_hbm_rfduct");
 		put(TileEntityReactorControl.class, "tileentity_reactor_remote_control");
 		put(TileEntityWasteDrum.class, "tileentity_waste_drum");
 		put(TileEntityDecon.class, "tileentity_decon");
@@ -193,7 +194,6 @@ public class TileMappings {
 		put(TileEntityLantern.class, "tileentity_lantern_ordinary");
 		put(TileEntityLanternBehemoth.class, "tileentity_lantern_behemoth");
 		put(TileEntityStorageDrum.class, "tileentity_waste_storage_drum");
-		put(TileEntityDeaerator.class, "tileentity_deaerator");
 		put(TileEntityCableBaseNT.class, "tileentity_ohgod"); // what?
 		put(TileEntityCablePaintable.class, "tileentity_cable_paintable");
 		put(TileEntityCableGauge.class, "tileentity_cable_gauge");

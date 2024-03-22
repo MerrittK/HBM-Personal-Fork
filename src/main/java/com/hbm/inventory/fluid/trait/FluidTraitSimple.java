@@ -69,7 +69,6 @@ public class FluidTraitSimple {
 			info.add(EnumChatFormatting.BLUE + "[Leaded Fuel]");
 		}
 	}
-
 	public static class FT_Unsiphonable extends FluidTrait {
 		@Override public void addInfoHidden(List<String> info) {
 			info.add(EnumChatFormatting.BLUE + "[Ignored by siphon]");

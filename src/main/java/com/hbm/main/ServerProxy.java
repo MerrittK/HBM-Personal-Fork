@@ -101,4 +101,6 @@ public class ServerProxy {
 	
 	public String getLanguageCode() { return "en_US"; }
 
+	public int getStackColor(ItemStack stack, boolean amplify) { return 0x000000; }
+
 }
