@@ -25,8 +25,8 @@ public class CryoRecipes extends SerializableRecipe {
 		recipes.put(Fluids.AIR, new Quartet(
 				new FluidStack(Fluids.NITROGEN, 50),
 				new FluidStack(Fluids.OXYGEN, 15),
-				new FluidStack(Fluids.XENON, 10),
-				new FluidStack(Fluids.CARBONDIOXIDE, 10)
+				new FluidStack(Fluids.XENON, 2),
+				new FluidStack(Fluids.CARBONDIOXIDE, 3)
 				));
 		
 	} // this is such a sexy machine might use your code for atmospheric distillator
@@ -40,7 +40,7 @@ public class CryoRecipes extends SerializableRecipe {
 		HashMap<Object, Object[]> map = new HashMap<Object, Object[]>();
 		
 		for(Entry<FluidType, Quartet<FluidStack, FluidStack, FluidStack, FluidStack>> recipe : recipes.entrySet()) {
-			map.put(ItemFluidIcon.make(recipe.getKey(), 1000),
+			map.put(ItemFluidIcon.make(recipe.getKey(), 1000, 1),
 					new ItemStack[] {
 							ItemFluidIcon.make(recipe.getValue().getX().type,	recipe.getValue().getX().fill * 10),
 							ItemFluidIcon.make(recipe.getValue().getY().type,	recipe.getValue().getY().fill * 10),

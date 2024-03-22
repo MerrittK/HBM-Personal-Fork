@@ -46,7 +46,7 @@ public class MachineCryoDistill extends BlockDummyable implements ILookOverlay {
 
 	@Override
 	public int getOffset() {
-		return 2;
+		return 1;
 	}
 
 	@Override
