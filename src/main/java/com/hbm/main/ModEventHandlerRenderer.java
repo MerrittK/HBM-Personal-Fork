@@ -414,19 +414,22 @@ public class ModEventHandlerRenderer {
 	private static int fogZ;
 	private static Vec3 fogRGBMultiplier;
 	private static boolean doesBiomeApply = false;
+	private static long fogTimer = 0;
 	
 	/** Same procedure as getting the blended sky color but for fog */
 	public static Vec3 getFogBlendColor(World world, int playerX, int playerZ, float red, float green, float blue, double partialTicks) {
 		
-		if(playerX == fogX && playerZ == fogZ && fogInit) return fogRGBMultiplier;
-		
+		long millis = System.currentTimeMillis() - fogTimer;
+		if(playerX == fogX && playerZ == fogZ && fogInit && millis < 3000) return fogRGBMultiplier;
+
 		fogInit = true;
+		fogTimer = System.currentTimeMillis();
 		GameSettings settings = Minecraft.getMinecraft().gameSettings;
 		int[] ranges = ForgeModContainer.blendRanges;
 		int distance = 0;
 		
-		if(settings.fancyGraphics && settings.renderDistanceChunks >= 0 && settings.renderDistanceChunks < ranges.length) {
-			distance = ranges[settings.renderDistanceChunks];
+		if(settings.fancyGraphics && settings.renderDistanceChunks >= 0) {
+			distance = ranges[Math.min(settings.renderDistanceChunks, ranges.length - 1)];
 		}
 
 		float r = 0F;
@@ -453,7 +456,7 @@ public class ModEventHandlerRenderer {
 		if(doesBiomeApply) {
 			fogRGBMultiplier = Vec3.createVectorHelper(r / divider, g / divider, b / divider);
 		} else {
-			fogRGBMultiplier = Vec3.createVectorHelper(red, green, blue);
+			fogRGBMultiplier = null;
 		}
 
 		return fogRGBMultiplier;
