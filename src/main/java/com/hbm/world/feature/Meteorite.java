@@ -5,10 +5,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
+import com.hbm.blocks.BlockEnums.EnumMeteorType;
 import com.hbm.blocks.ModBlocks;
 import com.hbm.config.WorldConfig;
 import com.hbm.explosion.ExplosionLarge;
 import com.hbm.interfaces.Spaghetti;
+import com.hbm.inventory.OreDictManager.DictFrame;
 import com.hbm.items.ModItems;
 import com.hbm.lib.ModDamageSource;
 
@@ -687,8 +689,8 @@ public class Meteorite {
 	}
 
 	public List<ItemStack> getRandomOre(Random rand) {
-
 		List<ItemStack> ores = new ArrayList<ItemStack>();
+<<<<<<< HEAD
 
 		for(int i = 0; i < 3; i++)
 			ores.add(new ItemStack(ModBlocks.ore_meteor_uranium));
@@ -713,6 +715,9 @@ public class Meteorite {
 		for(int i = 0; i < 9; i++)
 			ores.add(new ItemStack(ModBlocks.ore_meteor_iron));
 
+=======
+		for(EnumMeteorType num : EnumMeteorType.values()) ores.add(DictFrame.fromOne(ModBlocks.ore_meteor, num));
+>>>>>>> upstream/master
 		return ores;
 	}
 	
@@ -736,6 +741,7 @@ public class Meteorite {
 		replacables.add(ModBlocks.block_meteor_cobble);
 		replacables.add(ModBlocks.block_meteor_molten);
 		replacables.add(ModBlocks.block_meteor_treasure);
+<<<<<<< HEAD
 		replacables.add(ModBlocks.ore_meteor_uranium);
 		replacables.add(ModBlocks.ore_meteor_thorium);
 		replacables.add(ModBlocks.ore_meteor_titanium);
@@ -748,5 +754,8 @@ public class Meteorite {
 		replacables.add(ModBlocks.ore_meteor_starmetal);
 		replacables.add(ModBlocks.ore_meteor_iron);
 
+=======
+		replacables.add(ModBlocks.ore_meteor);
+>>>>>>> upstream/master
 	}
 }

@@ -11,8 +11,12 @@ import com.hbm.inventory.fluid.tank.FluidTank;
 import com.hbm.tileentity.INBTPacketReceiver;
 import com.hbm.tileentity.TileEntityLoadedBase;
 
+<<<<<<< HEAD
 import api.hbm.energy.IEnergyUser;
 import api.hbm.fluid.IFluidStandardReceiver;
+=======
+import api.hbm.energymk2.IEnergyReceiverMK2;
+>>>>>>> upstream/master
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
@@ -36,8 +40,13 @@ import net.minecraft.util.IntHashMap;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraftforge.common.util.ForgeDirection;
 
+<<<<<<< HEAD
 public class TileEntityMachineTeleporter extends TileEntityLoadedBase implements IEnergyUser, IFluidStandardReceiver, INBTPacketReceiver {
+=======
+public class TileEntityMachineTeleporter extends TileEntityLoadedBase implements IEnergyReceiverMK2, INBTPacketReceiver {
+>>>>>>> upstream/master
 
 	public long power = 0;
 	public int targetX = -1;
@@ -59,9 +68,14 @@ public class TileEntityMachineTeleporter extends TileEntityLoadedBase implements
 	public void updateEntity() {
 		
 		if(!this.worldObj.isRemote) {
+<<<<<<< HEAD
 			this.updateStandardConnections(worldObj, xCoord, yCoord, zCoord);
 			this.subscribeToAllAround(tank.getTankType(), this);
 
+=======
+			for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) this.trySubscribe(worldObj, xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ, dir);
+			
+>>>>>>> upstream/master
 			if(this.targetY != -1) {
 				List<Entity> entities = this.worldObj.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(this.xCoord + 0.25, this.yCoord, this.zCoord + 0.25, this.xCoord + 0.75, this.yCoord + 2, this.zCoord + 0.75));
 				
