@@ -690,34 +690,9 @@ public class Meteorite {
 
 	public List<ItemStack> getRandomOre(Random rand) {
 		List<ItemStack> ores = new ArrayList<ItemStack>();
-<<<<<<< HEAD
 
-		for(int i = 0; i < 3; i++)
-			ores.add(new ItemStack(ModBlocks.ore_meteor_uranium));
-		for(int i = 0; i < 5; i++)
-			ores.add(new ItemStack(ModBlocks.ore_meteor_thorium));
-		for(int i = 0; i < 6; i++)
-			ores.add(new ItemStack(ModBlocks.ore_meteor_titanium));
-		for(int i = 0; i < 7; i++)
-			ores.add(new ItemStack(ModBlocks.ore_meteor_sulfur));
-		for(int i = 0; i < 8; i++)
-			ores.add(new ItemStack(ModBlocks.ore_meteor_copper));
-		for(int i = 0; i < 5; i++)
-			ores.add(new ItemStack(ModBlocks.ore_meteor_tungsten));
-		for(int i = 0; i < 7; i++)
-			ores.add(new ItemStack(ModBlocks.ore_meteor_aluminium));
-		for(int i = 0; i < 6; i++)
-			ores.add(new ItemStack(ModBlocks.ore_meteor_lead));
-		for(int i = 0; i < 4; i++)
-			ores.add(new ItemStack(ModBlocks.ore_meteor_lithium));
-		for(int i = 0; i < 1; i++)
-			ores.add(new ItemStack(ModBlocks.ore_meteor_starmetal));
-		for(int i = 0; i < 9; i++)
-			ores.add(new ItemStack(ModBlocks.ore_meteor_iron));
-
-=======
 		for(EnumMeteorType num : EnumMeteorType.values()) ores.add(DictFrame.fromOne(ModBlocks.ore_meteor, num));
->>>>>>> upstream/master
+
 		return ores;
 	}
 	
@@ -741,21 +716,7 @@ public class Meteorite {
 		replacables.add(ModBlocks.block_meteor_cobble);
 		replacables.add(ModBlocks.block_meteor_molten);
 		replacables.add(ModBlocks.block_meteor_treasure);
-<<<<<<< HEAD
-		replacables.add(ModBlocks.ore_meteor_uranium);
-		replacables.add(ModBlocks.ore_meteor_thorium);
-		replacables.add(ModBlocks.ore_meteor_titanium);
-		replacables.add(ModBlocks.ore_meteor_sulfur);
-		replacables.add(ModBlocks.ore_meteor_copper);
-		replacables.add(ModBlocks.ore_meteor_tungsten);
-		replacables.add(ModBlocks.ore_meteor_aluminium);
-		replacables.add(ModBlocks.ore_meteor_lead);
-		replacables.add(ModBlocks.ore_meteor_lithium);
-		replacables.add(ModBlocks.ore_meteor_starmetal);
-		replacables.add(ModBlocks.ore_meteor_iron);
 
-=======
 		replacables.add(ModBlocks.ore_meteor);
->>>>>>> upstream/master
 	}
 }

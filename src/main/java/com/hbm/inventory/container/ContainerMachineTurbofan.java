@@ -77,12 +77,10 @@ public class ContainerMachineTurbofan extends Container {
 				slot.onSlotChanged();
 			}
 		}
-<<<<<<< HEAD
-		return var3;
-=======
+
 
 		return rStack;
->>>>>>> upstream/master
+
 	}
 
 	@Override

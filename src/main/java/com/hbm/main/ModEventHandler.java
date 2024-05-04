@@ -82,11 +82,11 @@ import com.hbm.util.ParticleUtil;
 import com.hbm.util.ArmorRegistry.HazardClass;
 import com.hbm.world.generator.TimedGenerator;
 
-<<<<<<< HEAD
+
 import cpw.mods.fml.common.eventhandler.Event.Result;
-=======
+
 import api.hbm.energymk2.Nodespace;
->>>>>>> upstream/master
+
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;

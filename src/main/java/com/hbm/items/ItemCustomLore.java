@@ -19,13 +19,10 @@ import net.minecraft.util.EnumChatFormatting;
 
 public class ItemCustomLore extends Item {
 	
-<<<<<<< HEAD
-	EnumRarity rarity;
-	private ItemStack stack;
-=======
+
 	protected EnumRarity rarity;
 	protected boolean hasEffect = false;
->>>>>>> upstream/master
+
 	
 	@Override
 	public void addInformation(ItemStack itemstack, EntityPlayer player, List list, boolean bool) {

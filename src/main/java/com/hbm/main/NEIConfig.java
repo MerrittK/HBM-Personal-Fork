@@ -25,47 +25,10 @@ public class NEIConfig implements IConfigureNEI {
 	
 	@Override
 	public void loadConfig() {
-<<<<<<< HEAD
-		registerHandler(new AlloyFurnaceRecipeHandler());
-		registerHandler(new ShredderRecipeHandler());
-		registerHandler(new PressRecipeHandler());
-		registerHandler(new CentrifugeRecipeHandler());
-		registerHandler(new GasCentrifugeRecipeHandler());
-		registerHandler(new BreederRecipeHandler());
-		registerHandler(new CyclotronRecipeHandler());
-		registerHandler(new AssemblerRecipeHandler());
-		registerHandler(new RefineryRecipeHandler());
-		registerHandler(new VacuumRecipeHandler());
-		registerHandler(new CrackingHandler());
-		registerHandler(new ReformingHandler());
-		registerHandler(new HydrotreatingHandler());
-		registerHandler(new BoilerRecipeHandler());
-		registerHandler(new ChemplantRecipeHandler());
-		registerHandler(new CrystallizerRecipeHandler());
-		registerHandler(new BookRecipeHandler());
-		registerHandler(new FusionRecipeHandler());
-		registerHandler(new HadronRecipeHandler());
-		registerHandler(new SILEXRecipeHandler());
-		registerHandler(new SmithingRecipeHandler());
-		registerHandler(new AnvilRecipeHandler());
-		registerHandler(new FuelPoolHandler());
-		registerHandler(new RadiolysisRecipeHandler());
-		registerHandler(new CrucibleSmeltingHandler());
-		registerHandler(new CrucibleAlloyingHandler());
-		registerHandler(new CrucibleCastingHandler());
-		registerHandler(new ToolingHandler());
-		registerHandler(new ConstructionHandler());
-		registerHandler(new CryoHandler());
 
-		
-		//universal boyes
-		registerHandler(new ZirnoxRecipeHandler());
-		if(VersatileConfig.rtgDecay()) {
-			registerHandler(new RTGRecipeHandler());
-=======
 		for (TemplateRecipeHandler handler: NEIRegistry.listAllHandlers()) {
 			registerHandler(handler);
->>>>>>> upstream/master
+
 		}
 
 		for(CustomMachineConfigJSON.MachineConfiguration conf : CustomMachineConfigJSON.niceList) registerHandler(new CustomMachineHandler(conf));

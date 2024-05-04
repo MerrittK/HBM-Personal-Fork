@@ -34,11 +34,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.common.MinecraftForge;
-<<<<<<< HEAD
+
 import scala.reflect.internal.Trees.New;
-=======
+
 import paulscode.sound.SoundSystemConfig;
->>>>>>> upstream/master
+
 
 import java.awt.Color;
 import java.awt.Desktop;

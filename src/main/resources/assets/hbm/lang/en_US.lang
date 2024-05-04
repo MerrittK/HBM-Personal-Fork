@@ -1555,16 +1555,16 @@ hbmmat.americiumrg=Reactor-Grade Americium
 hbmmat.americium241=Americium-241
 hbmmat.americium242=Americium-242
 hbmmat.arsenic=Arsenic
-<<<<<<< HEAD
+
 hbmmat.zinc=Zinc
 hbmmat.gallium=Gallium
 hbmmat.galliumarsenide=Gallium Arsenide
 hbmmat.platnium=Platinium
 hbmmat.iridium=Iridium
 hbmmat.stainlesssteel=Stainless Steel
-=======
+
 hbmmat.arsenicbronze=Arsenic Bronze
->>>>>>> upstream/master
+
 hbmmat.asbestos=Asbestos
 hbmmat.bakelite=Bakelite
 hbmmat.beryllium=Beryllium
@@ -2243,7 +2243,7 @@ item.canned_diesel.name=Canned Diesel
 item.canned_fist.name=Canned Fist
 item.canned_fried.name=Canned Fried Chicken
 item.canned_hotdogs.name=Canned Hotdogs
-item.canned_jizz.name==FlimFlam Industries Canned Stallion Milk™
+item.canned_jizz.name=FlimFlam Industries Canned Stallion Milk™
 item.canned_kerosene.name=Canned Kerosene
 item.canned_leftovers.name=Leftover Conserve
 item.canned_milk.name=Canned Evaporated Milk
