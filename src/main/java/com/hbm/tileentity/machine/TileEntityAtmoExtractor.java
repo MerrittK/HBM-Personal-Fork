@@ -13,13 +13,14 @@ import com.hbm.inventory.fluid.tank.FluidTank;
 import com.hbm.lib.Library;
 import com.hbm.tileentity.TileEntityMachineBase;
 
-import api.hbm.energy.IEnergyUser;
+
+import api.hbm.energymk2.IEnergyReceiverMK2;
 import api.hbm.fluid.IFluidStandardSender;
 import api.hbm.fluid.IFluidStandardTransceiver;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityAtmoExtractor extends TileEntityMachineBase implements IFluidSource, IEnergyUser, IFluidStandardSender {
+public class TileEntityAtmoExtractor extends TileEntityMachineBase implements  IEnergyReceiverMK2, IFluidSource, IFluidStandardSender {
 	float rotSpeed;
 	int consumption = 200;
 	public float rot;

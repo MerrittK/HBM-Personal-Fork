@@ -85,7 +85,7 @@ public class CrucibleRecipes extends SerializableRecipe {
 				.inputs(new MaterialStack(Mats.MAT_STEEL, n * 5), new MaterialStack(Mats.MAT_TUNGSTEN, n * 3), new MaterialStack(Mats.MAT_COBALT, n * 1))
 				.outputs(new MaterialStack(Mats.MAT_DURA, n * 9)));
 		
-		recipes.add(new CrucibleRecipe(14, "crucible.stainless", 9, new ItemStack(ModItems.ingot_stainless))
+		recipes.add(new CrucibleRecipe(16, "crucible.stainless", 9, new ItemStack(ModItems.ingot_stainless))
 				.inputs(new MaterialStack(Mats.MAT_STEEL, n * 5), new MaterialStack(Mats.MAT_NICKEL, n * 3), new MaterialStack(Mats.MAT_COBALT, n * 1))
 				.outputs(new MaterialStack(Mats.MAT_STAINLESS, n * 9)));
 		
@@ -113,7 +113,7 @@ public class CrucibleRecipes extends SerializableRecipe {
 				.inputs(new MaterialStack(Mats.MAT_MAGTUNG, n * 6), new MaterialStack(Mats.MAT_MUD, n * 3))
 				.outputs(new MaterialStack(Mats.MAT_CMB, i)));
 		
-		recipes.add(new CrucibleRecipe(15, "crucible.magtung", 9, new ItemStack(ModItems.ingot_magnetized_tungsten))
+		recipes.add(new CrucibleRecipe(17, "crucible.magtung", 9, new ItemStack(ModItems.ingot_magnetized_tungsten))
 				.inputs(new MaterialStack(Mats.MAT_TUNGSTEN, i), new MaterialStack(Mats.MAT_SCHRABIDIUM, n))
 				.outputs(new MaterialStack(Mats.MAT_MAGTUNG, i)));
 		

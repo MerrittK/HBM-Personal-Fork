@@ -21,7 +21,7 @@ import com.hbm.tileentity.IPersistentNBT;
 import com.hbm.tileentity.TileEntityMachineBase;
 import com.hbm.util.fauxpointtwelve.DirPos;
 
-import api.hbm.energy.IEnergyUser;
+import api.hbm.energymk2.IEnergyReceiverMK2;
 import api.hbm.fluid.IFluidStandardTransceiver;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -34,7 +34,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 
-public class TileEntityMachineMilkReformer extends TileEntityMachineBase implements IPersistentNBT, IGUIProvider, IFluidStandardTransceiver, IEnergyUser {
+public class TileEntityMachineMilkReformer extends TileEntityMachineBase implements IPersistentNBT, IGUIProvider, IFluidStandardTransceiver, IEnergyReceiverMK2 {
 	public boolean isOn;
 
 	public FluidTank tanks[];
@@ -215,11 +215,6 @@ AxisAlignedBB bb = null;
 	@SideOnly(Side.CLIENT)
 	public double getMaxRenderDistanceSquared() {
 		return 65536.0D;
-	}
-
-	@Override
-	public boolean canConnect(ForgeDirection dir) {
-		return dir != ForgeDirection.UNKNOWN && dir != ForgeDirection.DOWN;
 	}
 
 	@Override

@@ -14,6 +14,7 @@ import com.hbm.util.ContaminationUtil;
 import com.hbm.util.ContaminationUtil.ContaminationType;
 import com.hbm.util.ContaminationUtil.HazardType;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -31,6 +32,7 @@ public class EntityNukeExplosionMK5 extends EntityExplosionChunkloading {
 	
 	public boolean fallout = true;
 	private int falloutAdd = 0;
+	public boolean salted = false;
 	
 	ExplosionNukeRayBatched explosion;
 
@@ -84,7 +86,10 @@ public class EntityNukeExplosionMK5 extends EntityExplosionChunkloading {
 			fallout.posY = this.posY;
 			fallout.posZ = this.posZ;
 			fallout.setScale((int)(this.length * 2.5 + falloutAdd) * BombConfig.falloutRange / 100);
-
+			if(salted)
+			{
+				fallout.setSalted(true);
+			}
 			this.worldObj.spawnEntityInWorld(fallout);
 
 			this.clearChunkLoader();
@@ -165,5 +170,12 @@ public class EntityNukeExplosionMK5 extends EntityExplosionChunkloading {
 	public EntityNukeExplosionMK5 moreFallout(int fallout) {
 		falloutAdd = fallout;
 		return this;
+	}
+
+	public static EntityNukeExplosionMK5 statFacSalted(World world, int r, double x, double y, double z) {
+		
+		EntityNukeExplosionMK5 mk5 = statFac(world, r, x, y ,z);
+		mk5.salted = true;
+		return mk5;
 	}
 }
